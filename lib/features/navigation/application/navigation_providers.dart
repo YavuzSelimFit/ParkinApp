@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'dart:async';
 import '../../../core/models/vehicle_state.dart';
 import '../../../core/models/parking_space.dart';
 import '../../scanner/application/aruco_scanner_service.dart';
@@ -53,7 +54,10 @@ class ParkingSlot {
 }
 
 class ParkingSlotsNotifier extends StateNotifier<List<ParkingSlot>> {
-  ParkingSlotsNotifier() : super([
+  final HardwareCommunicationService _hardwareService;
+  StreamSubscription? _dataSubscription;
+
+  ParkingSlotsNotifier(this._hardwareService) : super([
     const ParkingSlot(label: 'A1'),
     const ParkingSlot(label: 'A2'),
     const ParkingSlot(label: 'B1'),
@@ -64,7 +68,25 @@ class ParkingSlotsNotifier extends StateNotifier<List<ParkingSlot>> {
     const ParkingSlot(label: 'D2'),
     const ParkingSlot(label: 'E1'),
     const ParkingSlot(label: 'E2'),
-  ]);
+  ]) {
+    _listenToHardware();
+  }
+
+  void _listenToHardware() {
+    _dataSubscription?.cancel();
+    _dataSubscription = _hardwareService.receivedDataStream.listen((arucoId) {
+      // Find the slot that has this ArUco ID assigned
+      final index = state.indexWhere((slot) => slot.qrValue == arucoId && slot.hasQrAssigned);
+      if (index != -1) {
+        setVehicleParked(index, ParkingSpace(
+          id: arucoId,
+          label: state[index].label,
+          qrValue: arucoId,
+          coordinates: [0, 0], // In a real app, these would be mapped
+        ));
+      }
+    });
+  }
 
   // SADECE QR OKUTULDUĞUNDA ÇAĞRILACAK (Hologramı başlatır)
   void assignQrToSlot(int index, String qrData) {
@@ -100,7 +122,8 @@ class ParkingSlotsNotifier extends StateNotifier<List<ParkingSlot>> {
 }
 
 final parkingSlotsProvider = StateNotifierProvider<ParkingSlotsNotifier, List<ParkingSlot>>((ref) {
-  return ParkingSlotsNotifier();
+  final hardwareService = ref.watch(hardwareServiceProvider);
+  return ParkingSlotsNotifier(hardwareService);
 });
 
 final selectedParkingSpaceProvider = StateProvider<ParkingSpace?>((ref) => null);

@@ -16,6 +16,11 @@ class HardwareCommunicationService {
   final _statusController = StreamController<VehicleStatus>.broadcast();
   Stream<VehicleStatus> get statusStream => _statusController.stream;
 
+  final _dataController = StreamController<String>.broadcast();
+  Stream<String> get receivedDataStream => _dataController.stream;
+
+  StreamSubscription? _dataSubscription;
+
   void startScanning() {
     _scanStream?.cancel();
     _scanStream = _ble.scanForDevices(withServices: []).listen((device) {
@@ -38,8 +43,20 @@ class HardwareCommunicationService {
     ).listen((update) {
       if (update.connectionState == DeviceConnectionState.connected) {
         _statusController.add(VehicleStatus.idle);
+        
+        // Subscribe to notifications from the Pico
+        _dataSubscription?.cancel();
+        _dataSubscription = _ble.subscribeToCharacteristic(_commandCharacteristic).listen(
+          (data) {
+            final received = String.fromCharCodes(data).trim();
+            debugPrint('Received from Pico: $received');
+            _dataController.add(received);
+          },
+          onError: (e) => debugPrint('BLE Subscription Error: $e'),
+        );
       } else if (update.connectionState == DeviceConnectionState.disconnected) {
         _statusController.add(VehicleStatus.disconnected);
+        _dataSubscription?.cancel();
         _deviceId = null;
       }
     });
