@@ -32,7 +32,7 @@ class _ArUcoScannerViewState extends ConsumerState<ArUcoScannerView> {
 
     _controller = CameraController(
       cameras.first,
-      ResolutionPreset.medium,
+      ResolutionPreset.high,
       enableAudio: false,
       imageFormatGroup: ImageFormatGroup.bgra8888,
     );

@@ -40,12 +40,14 @@ class ArucoScannerService {
       cv.Mat? mat;
       
       if (image.format.group == ImageFormatGroup.bgra8888) {
-        mat = cv.Mat.fromBuffer(
+        final rawMat = cv.Mat.fromBuffer(
           image.height,
           image.width,
           cv.MatType.CV_8UC4,
           _imageBuffer!.cast<ffi.Void>(),
         );
+        // Explicit conversion to grayscale improves ArUco detection significantly
+        mat = cv.cvtColor(rawMat, cv.COLOR_BGRA2GRAY);
       } else if (image.format.group == ImageFormatGroup.yuv420) {
         mat = cv.Mat.fromBuffer(
           image.height,

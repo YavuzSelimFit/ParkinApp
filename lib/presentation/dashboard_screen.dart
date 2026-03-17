@@ -150,6 +150,9 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                       _learnNewSlot(index);
                     }
                   },
+                  onClear: () {
+                    ref.read(parkingSlotsProvider.notifier).clearSlot(index);
+                  },
                 );
               },
             ),
@@ -207,12 +210,14 @@ class CleanParkingSlotCard extends StatelessWidget {
   final ParkingSlot slotData;
   final int index;
   final VoidCallback onTap;
+  final VoidCallback onClear;
 
   const CleanParkingSlotCard({
     super.key,
     required this.slotData,
     required this.index,
     required this.onTap,
+    required this.onClear,
   });
 
   @override
@@ -301,19 +306,45 @@ class CleanParkingSlotCard extends StatelessWidget {
         ),
         child: Stack(
           children: [
+            Center(child: content),
+            
+            // Delete/Clear Button
+            if (isOccupied || hasQrAssigned)
+              Positioned(
+                top: 8,
+                right: 8,
+                child: GestureDetector(
+                  onTap: onClear,
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.withValues(alpha: 0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.close,
+                      size: 14,
+                      color: Colors.grey.shade600,
+                    ),
+                  ),
+                ),
+              ),
+              
             Positioned(
-              top: 16,
+              top: 12,
               left: 16,
               child: Text(
                 slotData.label,
                 style: GoogleFonts.spaceGrotesk(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: isOccupied ? AppColors.primary : Colors.grey.shade800,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w900,
+                  color: isOccupied || hasQrAssigned 
+                      ? (isOccupied ? AppColors.primary : const Color(0xFF34C759)) 
+                      : Colors.grey.shade300,
+                  letterSpacing: -0.5,
                 ),
               ),
             ),
-            Center(child: content),
           ],
         ),
       ),
