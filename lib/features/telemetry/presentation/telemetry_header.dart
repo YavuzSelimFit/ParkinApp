@@ -77,43 +77,43 @@ class StatusIndicator extends ConsumerWidget {
             ref.read(hardwareServiceProvider).startScanning();
             if (context.mounted) {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('VEHICLE SCANNING STARTED...')),
+                const SnackBar(content: Text('PICO TARANIYOR...')),
               );
             }
           }
         }
       },
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
-          color: isConnected ? const Color(0x1A00E5FF) : const Color(0x1AFF3B30),
+          color: isConnected ? const Color(0x1A00E5FF) : AppColors.primary,
           borderRadius: BorderRadius.circular(12),
+          boxShadow: isConnected ? [] : [
+            BoxShadow(
+              color: AppColors.primary.withValues(alpha: 0.3),
+              blurRadius: 12,
+              offset: const Offset(0, 4),
+            )
+          ],
           border: Border.all(
-            color: isConnected ? const Color(0x4D00E5FF) : const Color(0x4DFF3B30),
+            color: isConnected ? const Color(0x4D00E5FF) : AppColors.primary,
           ),
         ),
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              width: 8,
-              height: 8,
-              decoration: BoxDecoration(
-                color: isConnected ? AppColors.primary : AppColors.critical,
-                shape: BoxShape.circle,
-                boxShadow: isConnected ? [
-                  const BoxShadow(
-                    color: AppColors.primary,
-                    blurRadius: 8,
-                  )
-                ] : [],
-              ),
+            Icon(
+              isConnected ? Icons.bluetooth_connected : Icons.bluetooth,
+              size: 14,
+              color: isConnected ? AppColors.primary : Colors.white,
             ),
             const SizedBox(width: 8),
             Text(
-              isConnected ? 'CONNECTED' : 'OFFLINE',
+              isConnected ? 'BAĞLI' : 'CİHAZ BAĞLA',
               style: GoogleFonts.spaceGrotesk(
-                color: isConnected ? AppColors.primary : AppColors.critical,
-                fontSize: 10,
+                color: isConnected ? AppColors.primary : Colors.white,
+                fontSize: 11,
                 fontWeight: FontWeight.w900,
                 letterSpacing: 1,
               ),

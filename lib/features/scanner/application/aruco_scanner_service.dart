@@ -14,7 +14,7 @@ class ArucoScannerService {
 
   void initialize() {
     if (_isInitialized) return;
-    final dictionary = cv.ArucoDictionary.predefined(cv.PredefinedDictionaryType.DICT_4X4_50);
+    final dictionary = cv.ArucoDictionary.predefined(cv.PredefinedDictionaryType.DICT_6X6_250);
     final parameters = cv.ArucoDetectorParameters.empty();
     _detector = cv.ArucoDetector.create(dictionary, parameters);
     _isInitialized = true;

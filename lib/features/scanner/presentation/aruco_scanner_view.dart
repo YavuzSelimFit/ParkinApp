@@ -123,7 +123,7 @@ class _ArUcoScannerViewState extends ConsumerState<ArUcoScannerView> {
             right: 0,
             child: Center(
               child: Text(
-                'POINT AT ARUCO MARKER (DICT_4X4_50)',
+                'POINT AT ARUCO MARKER (DICT_6X6_250)',
                 style: TextStyle(
                   color: Colors.white70,
                   fontSize: 12,

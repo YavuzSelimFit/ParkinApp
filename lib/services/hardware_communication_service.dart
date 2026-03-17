@@ -19,9 +19,9 @@ class HardwareCommunicationService {
   void startScanning() {
     _scanStream?.cancel();
     _scanStream = _ble.scanForDevices(withServices: []).listen((device) {
-      // Look for the Raspberry Pi 5 BLE server
-      // You can update "CAR_V1" to your Pi's specific BLE name if needed
-      if (device.name == "CAR_V1" || device.name.contains("raspberrypi")) {
+      // Look for the Arduino Pico or other relevant devices
+      final name = device.name.toLowerCase();
+      if (name.contains("pico") || name.contains("arduino") || name.contains("car_v1")) {
         debugPrint('Vehicle Found: ${device.name} (${device.id})');
         _deviceId = device.id;
         _connect(device.id);
