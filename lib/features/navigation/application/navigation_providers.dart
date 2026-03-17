@@ -8,19 +8,18 @@ import '../../../core/services/permission_service.dart';
 final hardwareServiceProvider = Provider((ref) => HardwareCommunicationService());
 final permissionServiceProvider = Provider((ref) => PermissionService());
 
-final vehicleStatusProvider = StateProvider<VehicleStatus>((ref) => VehicleStatus.disconnected);
+final vehicleStatusProvider = StateProvider<VehicleStatus>((ref) {
+  final service = ref.watch(hardwareServiceProvider);
+  // Bir seferlik dinleyiciyi başlatıyoruz
+  service.statusStream.listen((status) {
+    ref.controller.state = status;
+  });
+  return VehicleStatus.disconnected;
+});
 
 final isConnectedProvider = Provider<bool>((ref) {
   final status = ref.watch(vehicleStatusProvider);
   return status != VehicleStatus.disconnected;
-});
-
-// Listener setup (this would usually be in a more global place or initState)
-final vehicleStatusListenerProvider = Provider((ref) {
-  final service = ref.watch(hardwareServiceProvider);
-  service.statusStream.listen((status) {
-    ref.read(vehicleStatusProvider.notifier).state = status;
-  });
 });
 class ParkingSlot {
   final String label;

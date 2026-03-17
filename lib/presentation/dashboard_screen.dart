@@ -17,6 +17,22 @@ class DashboardScreen extends ConsumerStatefulWidget {
 
 class _DashboardScreenState extends ConsumerState<DashboardScreen> {
   @override
+  void initState() {
+    super.initState();
+    // Uygulama açıldığında otomatik olarak BLE izinlerini kontrol et ve taramayı başlat
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _initializeConnection();
+    });
+  }
+
+  Future<void> _initializeConnection() async {
+    final hasPermissions = await ref.read(permissionServiceProvider).requestBluetoothPermissions();
+    if (hasPermissions) {
+      ref.read(hardwareServiceProvider).startScanning();
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final slots = ref.watch(parkingSlotsProvider);
     
