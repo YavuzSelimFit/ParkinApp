@@ -1,0 +1,20 @@
+﻿Analyzing intelligent_parking_app...                            
+
+   info - The constant name 'tertiary_container' isn't a lowerCamelCase identifier - lib\core\theme\app_theme.dart:11:22 - constant_identifier_names
+  error - Undefined name 'AppColors' - lib\features\scanner\presentation\qr_scanner_overlay.dart:46:43 - undefined_identifier
+  error - Invalid constant value - lib\features\scanner\presentation\qr_scanner_overlay.dart:50:72 - invalid_constant
+  error - Undefined name 'AppColors' - lib\features\scanner\presentation\qr_scanner_overlay.dart:50:72 - undefined_identifier
+   info - Constructors for public widgets should have a named 'key' parameter - lib\features\telemetry\presentation\telemetry_header.dart:65:7 - use_key_in_widget_constructors
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\telemetry\presentation\telemetry_header.dart:72:48 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\telemetry\presentation\telemetry_header.dart:72:78 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\telemetry\presentation\telemetry_header.dart:75:50 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\telemetry\presentation\telemetry_header.dart:75:80 - deprecated_member_use
+warning - Unused import: '../features/safety/presentation/safety_footer.dart' - lib\presentation\dashboard_screen.dart:4:8 - unused_import
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\dashboard_screen.dart:135:38 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\dashboard_screen.dart:145:52 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\dashboard_screen.dart:147:60 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\dashboard_screen.dart:239:56 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\dashboard_screen.dart:239:88 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\dashboard_screen.dart:244:40 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\dashboard_screen.dart:299:55 - deprecated_member_use
+

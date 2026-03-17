@@ -1,0 +1,87 @@
+import 'dart:async';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
+import '../core/models/vehicle_state.dart';
+import '../core/models/parking_space.dart';
+
+class HardwareCommunicationService {
+  final _ble = FlutterReactiveBle();
+  StreamSubscription<ConnectionStateUpdate>? _connectionStream;
+  StreamSubscription? _scanStream;
+  String? _deviceId;
+  
+  static final Uuid serviceUuid = Uuid.parse("0000ffe0-0000-1000-8000-00805f9b34fb");
+  static final Uuid commandCharUuid = Uuid.parse("0000ffe1-0000-1000-8000-00805f9b34fb");
+
+  final _statusController = StreamController<VehicleStatus>.broadcast();
+  Stream<VehicleStatus> get statusStream => _statusController.stream;
+
+  void startScanning() {
+    _scanStream?.cancel();
+    _scanStream = _ble.scanForDevices(withServices: []).listen((device) {
+      // Look for the Raspberry Pi 5 BLE server
+      // You can update "CAR_V1" to your Pi's specific BLE name if needed
+      if (device.name == "CAR_V1" || device.name.contains("raspberrypi")) {
+        debugPrint('Vehicle Found: ${device.name} (${device.id})');
+        _deviceId = device.id;
+        _connect(device.id);
+        _scanStream?.cancel();
+      }
+    });
+  }
+
+  void _connect(String deviceId) {
+    _connectionStream?.cancel();
+    _connectionStream = _ble.connectToDevice(
+      id: deviceId,
+      connectionTimeout: const Duration(seconds: 5),
+    ).listen((update) {
+      if (update.connectionState == DeviceConnectionState.connected) {
+        _statusController.add(VehicleStatus.idle);
+      } else if (update.connectionState == DeviceConnectionState.disconnected) {
+        _statusController.add(VehicleStatus.disconnected);
+        _deviceId = null;
+      }
+    });
+  }
+
+  Future<void> sendParkCommand(ParkingSpace space) async {
+    if (_deviceId == null) return;
+    // Protocol: Just the QR identifier bytes
+    final data = space.qrValue.codeUnits;
+    await _ble.writeCharacteristicWithoutResponse(
+      _commandCharacteristic,
+      value: data,
+    );
+  }
+
+  Future<void> sendSummonCommand(ParkingSpace homeSpace) async {
+    if (_deviceId == null) return;
+    // Protocol: Just the Home QR identifier bytes
+    final data = homeSpace.qrValue.codeUnits;
+    await _ble.writeCharacteristicWithoutResponse(
+      _commandCharacteristic,
+      value: data,
+    );
+  }
+
+  QualifiedCharacteristic get _commandCharacteristic => QualifiedCharacteristic(
+    characteristicId: commandCharUuid,
+    serviceId: serviceUuid,
+    deviceId: _deviceId!,
+  );
+
+  Future<void> sendEmergencyStop() async {
+    if (_deviceId == null) return;
+    await _ble.writeCharacteristicWithoutResponse(
+      _commandCharacteristic,
+      value: [0xFF], // Special halt byte, distinct from QR strings
+    );
+  }
+
+  void dispose() {
+    _scanStream?.cancel();
+    _connectionStream?.cancel();
+    _statusController.close();
+  }
+}

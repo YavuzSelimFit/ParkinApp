@@ -1,0 +1,2007 @@
+﻿[ +147 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[        ] Artifact Instance of 'GradleWrapper' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterSdk' is not required, skipping update.
+[        ] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
+[   +1 ms] executing: [D:\src\flutter/] git -c log.showSignature=false log HEAD -n 1 --pretty=format:%ad --date=iso
+[  +84 ms] Exit code 0 from: git -c log.showSignature=false log HEAD -n 1 --pretty=format:%ad --date=iso
+[        ] 2026-03-03 16:03:22 -0800
+[  +16 ms] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterEngineStamp' is not required, skipping update.
+[        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[   +2 ms] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[  +48 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[        ] Artifact Instance of 'GradleWrapper' is not required, skipping update.
+[   +2 ms] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterEngineStamp' is not required, skipping update.
+[        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterSdk' is not required, skipping update.
+[        ] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
+[ +103 ms] Skipping pub get: version match.
+[  +91 ms] Found plugin permission_handler at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler-12.0.1\
+[   +6 ms] Found plugin permission_handler_windows at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_windows-0.2.1\
+[   +7 ms] Found plugin permission_handler_html at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_html-0.1.3+5\
+[   +6 ms] Found plugin permission_handler_apple at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_apple-9.4.7\
+[   +3 ms] Found plugin permission_handler_android at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_android-13.0.1\
+[   +5 ms] Found plugin mobile_scanner at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\mobile_scanner-7.2.0\
+[   +5 ms] Found plugin path_provider at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider-2.1.5\
+[   +2 ms] Found plugin path_provider_windows at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_windows-2.3.0\
+[   +8 ms] Found plugin path_provider_linux at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_linux-2.2.1\
+[   +6 ms] Found plugin path_provider_foundation at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_foundation-2.6.0\
+[  +29 ms] Found plugin path_provider_android at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.2.22\
+[  +51 ms] Found plugin flutter_reactive_ble at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_reactive_ble-5.4.0\
+[   +3 ms] Found plugin reactive_ble_mobile at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\reactive_ble_mobile-5.4.0\
+[  +62 ms] Found plugin permission_handler at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler-12.0.1\
+[   +1 ms] Found plugin permission_handler_windows at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_windows-0.2.1\
+[   +3 ms] Found plugin permission_handler_html at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_html-0.1.3+5\
+[   +3 ms] Found plugin permission_handler_apple at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_apple-9.4.7\
+[   +1 ms] Found plugin permission_handler_android at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_android-13.0.1\
+[   +1 ms] Found plugin mobile_scanner at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\mobile_scanner-7.2.0\
+[   +2 ms] Found plugin path_provider at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider-2.1.5\
+[   +1 ms] Found plugin path_provider_windows at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_windows-2.3.0\
+[   +5 ms] Found plugin path_provider_linux at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_linux-2.2.1\
+[   +2 ms] Found plugin path_provider_foundation at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_foundation-2.6.0\
+[  +13 ms] Found plugin path_provider_android at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.2.22\
+[  +33 ms] Found plugin flutter_reactive_ble at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_reactive_ble-5.4.0\
+[   +3 ms] Found plugin reactive_ble_mobile at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\reactive_ble_mobile-5.4.0\
+[  +15 ms] Skipping generating web_plugin_registrant.dart because it is up-to-date.
+[  +38 ms] Found plugin permission_handler at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler-12.0.1\
+[   +1 ms] Found plugin permission_handler_windows at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_windows-0.2.1\
+[   +3 ms] Found plugin permission_handler_html at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_html-0.1.3+5\
+[   +3 ms] Found plugin permission_handler_apple at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_apple-9.4.7\
+[   +1 ms] Found plugin permission_handler_android at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_android-13.0.1\
+[   +1 ms] Found plugin mobile_scanner at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\mobile_scanner-7.2.0\
+[   +2 ms] Found plugin path_provider at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider-2.1.5\
+[   +1 ms] Found plugin path_provider_windows at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_windows-2.3.0\
+[   +4 ms] Found plugin path_provider_linux at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_linux-2.2.1\
+[   +2 ms] Found plugin path_provider_foundation at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_foundation-2.6.0\
+[  +14 ms] Found plugin path_provider_android at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.2.22\
+[  +35 ms] Found plugin flutter_reactive_ble at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_reactive_ble-5.4.0\
+[   +3 ms] Found plugin reactive_ble_mobile at C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\reactive_ble_mobile-5.4.0\
+[   +7 ms] Generating D:\MobileAppPark\intelligent_parking_app\android\app\src\main\java\io\flutter\plugins\GeneratedPluginRegistrant.java
+[   +2 ms] Skipping generating GeneratedPluginRegistrant.java because it is up-to-date.
+[   +5 ms] Skipping generating generated_plugin_registrant.h because it is up-to-date.
+[   +1 ms] Skipping generating generated_plugin_registrant.cc because it is up-to-date.
+[   +1 ms] Skipping generating generated_plugins.cmake because it is up-to-date.
+[   +3 ms] Skipping generating generated_plugin_registrant.h because it is up-to-date.
+[   +1 ms] Skipping generating generated_plugin_registrant.cc because it is up-to-date.
+[   +1 ms] Skipping generating generated_plugins.cmake because it is up-to-date.
+[   +2 ms] Skipping generating GeneratedPluginRegistrant.h because it is up-to-date.
+[   +1 ms] Skipping generating GeneratedPluginRegistrant.m because it is up-to-date.
+[   +1 ms] Skipping generating GeneratedPluginRegistrant.swift because it is up-to-date.
+[  +68 ms] executing: D:\android studip\jbr\bin\java -version
+[ +147 ms] Exit code 0 from: D:\android studip\jbr\bin\java -version
+[        ] openjdk version "21.0.8" 2025-07-15
+           OpenJDK Runtime Environment (build 21.0.8+-14196175-b1038.72)
+           OpenJDK 64-Bit Server VM (build 21.0.8+-14196175-b1038.72, mixed mode)
+[  +11 ms] Top-level Gradle build file not found, skipping migration of task "clean".
+[   +2 ms] executing: D:\android studip\jbr\bin\java --version
+[ +152 ms] Exit code 0 from: D:\android studip\jbr\bin\java --version
+[        ] openjdk 21.0.8 2025-07-15
+           OpenJDK Runtime Environment (build 21.0.8+-14196175-b1038.72)
+           OpenJDK 64-Bit Server VM (build 21.0.8+-14196175-b1038.72, mixed mode)
+[   +3 ms] Version of Java is different than impacted version, no migration attempted.
+[  +18 ms] CMake project not found, skipping support Android 15 16k page size migration.
+[   +4 ms] Using gradle from D:\MobileAppPark\intelligent_parking_app\android\gradlew.bat.
+[  +11 ms] LocalFile: 'D:\MobileAppPark\intelligent_parking_app\android\build.gradle.kts' doesn't provide an AGP version. Checking settings.
+[   +1 ms] LocalFile: 'D:\MobileAppPark\intelligent_parking_app\android\settings.gradle.kts' provides AGP version: 8.11.1
+[   +3 ms] Running Gradle task 'assembleRelease'...
+[   +1 ms] executing: [D:\MobileAppPark\intelligent_parking_app\android/] D:\MobileAppPark\intelligent_parking_app\android\gradlew.bat --full-stacktrace --info -Pverbose=true -Ptarget-platform=android-arm,android-arm64,android-x64 -Ptarget=lib\main.dart -Pbase-application-name=android.app.Application -Pdart-defines=RkxVVFRFUl9WRVJTSU9OPTMuNDEuNA==,RkxVVFRFUl9DSEFOTkVMPXN0YWJsZQ==,RkxVVFRFUl9HSVRfVVJMPWh0dHBzOi8vZ2l0aHViLmNvbS9mbHV0dGVyL2ZsdXR0ZXIuZ2l0,RkxVVFRFUl9GUkFNRVdPUktfUkVWSVNJT049ZmYzN2JlZjYwMw==,RkxVVFRFUl9FTkdJTkVfUkVWSVNJT049ZTRiOGRjYTNmMQ==,RkxVVFRFUl9EQVJUX1ZFUlNJT049My4xMS4x -Pdart-obfuscation=false -Ptrack-widget-creation=true -Ptree-shake-icons=true assembleRelease
+[ +862 ms] Initialized native services in: C:\Users\Yavuz\.gradle\native
+[        ] Initialized jansi services in: C:\Users\Yavuz\.gradle\native
+[ +133 ms] Welcome to Gradle 8.14!
+[        ] Here are the highlights of this release:
+[        ]  - Java 24 support
+[        ]  - GraalVM Native Image toolchain selection
+[        ]  - Enhancements to test reporting
+[        ]  - Build Authoring improvements
+[        ] For more details see https://docs.gradle.org/8.14/release-notes.html
+[ +397 ms] The client will now receive all logging from the daemon (pid: 28920). The daemon log file: C:\Users\Yavuz\.gradle\daemon\8.14\daemon-28920.out.log
+[        ] Starting 3rd build in daemon [uptime: 7 mins 34.341 secs, performance: 100%, GC rate: 0.00/s, heap usage: 0% of 8 GiB, non-heap usage: 3% of 4 GiB]
+[        ] Using 16 worker leases.
+[        ] Now considering [D:\MobileAppPark\intelligent_parking_app\android, D:\src\flutter\packages\flutter_tools\gradle] as hierarchies to watch
+[        ] Watching the file system is configured to be enabled if available
+[        ] File system watching is active
+[        ] Starting Build
+[        ] Now considering [D:\src\flutter\packages\flutter_tools\gradle, D:\MobileAppPark\intelligent_parking_app\android] as hierarchies to watch
+[ +199 ms] > Configure project :gradle
+[        ] Evaluating project ':gradle' using build file 'D:\src\flutter\packages\flutter_tools\gradle\build.gradle.kts'.
+[        ] Resolved plugin [id: 'org.gradle.java-gradle-plugin']
+[        ] Resolved plugin [id: 'org.gradle.groovy']
+[        ] Resolved plugin [id: 'org.gradle.kotlin.kotlin-dsl', version: '5.2.0']
+[        ] Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '1.9.20']
+[        ] Using Kotlin Gradle Plugin gradle85 variant
+[        ] kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+[        ] kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+[        ] file or directory 'D:\src\flutter\packages\flutter_tools\gradle\src\main\java', not found
+[        ] Resolved plugin [id: 'dev.flutter.flutter-plugin-loader', version: '1.0.0']
+[        ] Resolved plugin [id: 'com.android.application', version: '8.11.1', apply: false]
+[        ] Resolved plugin [id: 'org.jetbrains.kotlin.android', version: '2.2.20', apply: false]
+[        ] Resolve mutations for :gradle:checkKotlinGradlePluginConfigurationErrors (Thread[#511,Execution worker,5,main]) started.
+[        ] :gradle:checkKotlinGradlePluginConfigurationErrors (Thread[#516,Execution worker Thread 6,5,main]) started.
+[        ] > Task :gradle:checkKotlinGradlePluginConfigurationErrors SKIPPED
+[        ] Skipping task ':gradle:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+[        ] Resolve mutations for :gradle:compileKotlin (Thread[#516,Execution worker Thread 6,5,main]) started.
+[        ] :gradle:compileKotlin (Thread[#516,Execution worker Thread 6,5,main]) started.
+[  +95 ms] > Task :gradle:compileKotlin UP-TO-DATE
+[        ] Caching disabled for task ':gradle:compileKotlin' because:
+[        ]   Build cache is disabled
+[        ] Skipping task ':gradle:compileKotlin' as it is up-to-date.
+[        ] Resolve mutations for :gradle:compileJava (Thread[#516,Execution worker Thread 6,5,main]) started.
+[        ] :gradle:compileJava (Thread[#516,Execution worker Thread 6,5,main]) started.
+[        ] > Task :gradle:compileJava NO-SOURCE
+[        ] Skipping task ':gradle:compileJava' as it has no source files and no previous output files.
+[        ] Resolve mutations for :gradle:compileGroovy (Thread[#516,Execution worker Thread 6,5,main]) started.
+[        ] :gradle:compileGroovy (Thread[#516,Execution worker Thread 6,5,main]) started.
+[        ] > Task :gradle:compileGroovy NO-SOURCE
+[        ] Skipping task ':gradle:compileGroovy' as it has no source files and no previous output files.
+[        ] Resolve mutations for :gradle:pluginDescriptors (Thread[#516,Execution worker Thread 6,5,main]) started.
+[        ] :gradle:pluginDescriptors (Thread[#516,Execution worker Thread 6,5,main]) started.
+[        ] > Task :gradle:pluginDescriptors UP-TO-DATE
+[        ] Caching disabled for task ':gradle:pluginDescriptors' because:
+[        ]   Build cache is disabled
+[        ]   Not worth caching
+[        ] Skipping task ':gradle:pluginDescriptors' as it is up-to-date.
+[        ] Resolve mutations for :gradle:processResources (Thread[#516,Execution worker Thread 6,5,main]) started.
+[        ] :gradle:processResources (Thread[#520,Execution worker Thread 10,5,main]) started.
+[        ] > Task :gradle:processResources UP-TO-DATE
+[        ] Caching disabled for task ':gradle:processResources' because:
+[        ]   Build cache is disabled
+[        ]   Not worth caching
+[        ] Skipping task ':gradle:processResources' as it is up-to-date.
+[        ] Resolve mutations for :gradle:classes (Thread[#520,Execution worker Thread 10,5,main]) started.
+[        ] :gradle:classes (Thread[#520,Execution worker Thread 10,5,main]) started.
+[        ] > Task :gradle:classes UP-TO-DATE
+[        ] Skipping task ':gradle:classes' as it has no actions.
+[        ] Resolve mutations for :gradle:jar (Thread[#520,Execution worker Thread 10,5,main]) started.
+[        ] :gradle:jar (Thread[#520,Execution worker Thread 10,5,main]) started.
+[        ] > Task :gradle:jar UP-TO-DATE
+[        ] Caching disabled for task ':gradle:jar' because:
+[        ]   Build cache is disabled
+[        ]   Not worth caching
+[        ] Skipping task ':gradle:jar' as it is up-to-date.
+[ +184 ms] Settings evaluated using settings file 'D:\MobileAppPark\intelligent_parking_app\android\settings.gradle.kts'.
+[        ] Projects loaded. Root project using build file 'D:\MobileAppPark\intelligent_parking_app\android\build.gradle.kts'.
+[        ] Included projects: [root project 'android', project ':app', project ':mobile_scanner', project ':path_provider_android', project ':permission_handler_android', project ':reactive_ble_mobile']
+[ +299 ms] > Configure project :app
+[        ] Evaluating project ':app' using build file 'D:\MobileAppPark\intelligent_parking_app\android\app\build.gradle.kts'.
+[        ] Resolved plugin [id: 'com.android.application']
+[        ] Resolved plugin [id: 'kotlin-android']
+[        ] Resolved plugin [id: 'dev.flutter.flutter-gradle-plugin']
+[        ] Using default execution profile
+[        ] Build e76bfcec-6c90-49ce-884e-325af00b0dfc is started
+[        ] Using Kotlin Gradle Plugin gradle813 variant
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Yavuz\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Yavuz\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Yavuz\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Yavuz\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Yavuz\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Yavuz\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Yavuz\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Yavuz\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Yavuz\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Yavuz\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Yavuz\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Yavuz\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Yavuz\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Yavuz\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Yavuz\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Yavuz\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Yavuz\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Yavuz\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Yavuz\AppData\Local\Android\sdk
+[        ] > Configure project :
+[        ] Evaluating root project 'android' using build file 'D:\MobileAppPark\intelligent_parking_app\android\build.gradle.kts'.
+[  +93 ms] > Configure project :mobile_scanner
+[        ] Evaluating project ':mobile_scanner' using build file 'C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\mobile_scanner-7.2.0\android\build.gradle'.
+[        ] Using default execution profile
+[        ] Using Kotlin Gradle Plugin gradle813 variant
+[  +98 ms] > Configure project :path_provider_android
+[        ] Evaluating project ':path_provider_android' using build file 'C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.2.22\android\build.gradle'.
+[        ] Using default execution profile
+[ +193 ms] > Configure project :permission_handler_android
+[        ] Evaluating project ':permission_handler_android' using build file 'C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_android-13.0.1\android\build.gradle'.
+[        ] Using default execution profile
+[ +306 ms] > Configure project :reactive_ble_mobile
+[        ] Evaluating project ':reactive_ble_mobile' using build file 'C:\Users\Yavuz\AppData\Local\Pub\Cache\hosted\pub.dev\reactive_ble_mobile-5.4.0\android\build.gradle'.
+[        ] Using default execution profile
+[        ] The com.google.protobuf plugin was already applied to the project: :reactive_ble_mobile and will not be applied again after plugin: android-library
+[        ] Using Kotlin Gradle Plugin gradle813 variant
+[        ] ------------------------------------------------------------------------
+[        ] Detecting the operating system and CPU architecture
+[        ] ------------------------------------------------------------------------
+[        ] os.detected.name=windows
+[        ] os.detected.arch=x86_64
+[        ] os.detected.bitness=64
+[        ] os.detected.version=10.0
+[        ] os.detected.version.major=10
+[        ] os.detected.version.minor=0
+[        ] os.detected.classifier=windows-x86_64
+[        ] All projects evaluated.
+[        ] Task name matched 'assembleRelease'
+[        ] Selected primary task 'assembleRelease' from project :
+[ +200 ms] Tasks to be executed: [task ':app:ReleaseMinSdkCheck', task ':app:compileFlutterBuildRelease', task ':app:packJniLibsflutterBuildRelease', task ':app:preBuild', task ':app:preReleaseBuild', task ':app:configureCMakeRelease[arm64-v8a]', task ':app:buildCMakeRelease[arm64-v8a]', task ':app:configureCMakeRelease[armeabi-v7a]', task ':app:buildCMakeRelease[armeabi-v7a]', task ':app:configureCMakeRelease[x86_64]', task ':app:buildCMakeRelease[x86_64]', task ':app:mergeReleaseJniLibFolders', task ':mobile_scanner:preBuild', task ':mobile_scanner:preReleaseBuild', task ':mobile_scanner:mergeReleaseJniLibFolders', task ':mobile_scanner:mergeReleaseNativeLibs', task ':mobile_scanner:copyReleaseJniLibsProjectOnly', task ':path_provider_android:preBuild', task ':path_provider_android:preReleaseBuild', task ':path_provider_android:mergeReleaseJniLibFolders', task ':path_provider_android:mergeReleaseNativeLibs', task ':path_provider_android:copyReleaseJniLibsProjectOnly', task ':permission_handler_android:preBuild', task ':permission_handler_android:preReleaseBuild', task ':permission_handler_android:mergeReleaseJniLibFolders', task ':permission_handler_android:mergeReleaseNativeLibs', task ':permission_handler_android:copyReleaseJniLibsProjectOnly', task ':reactive_ble_mobile:preBuild', task ':reactive_ble_mobile:preReleaseBuild', task ':reactive_ble_mobile:mergeReleaseJniLibFolders', task ':reactive_ble_mobile:mergeReleaseNativeLibs', task ':reactive_ble_mobile:copyReleaseJniLibsProjectOnly', task ':app:mergeReleaseNativeLibs', task ':app:stripReleaseDebugSymbols', task ':app:extractReleaseNativeSymbolTables', task ':app:mergeReleaseNativeDebugMetadata', task ':mobile_scanner:checkKotlinGradlePluginConfigurationErrors', task ':mobile_scanner:generateReleaseResValues', task ':mobile_scanner:generateReleaseResources', task ':mobile_scanner:packageReleaseResources', task ':mobile_scanner:parseReleaseLocalResources', task ':mobile_scanner:generateReleaseRFile', task ':mobile_scanner:compileReleaseKotlin', task ':mobile_scanner:javaPreCompileRelease', task ':mobile_scanner:compileReleaseJavaWithJavac', task ':mobile_scanner:mergeReleaseGeneratedProguardFiles', task ':mobile_scanner:exportReleaseConsumerProguardFiles', task ':path_provider_android:generateReleaseResValues', task ':path_provider_android:generateReleaseResources', task ':path_provider_android:packageReleaseResources', task ':path_provider_android:parseReleaseLocalResources', task ':path_provider_android:generateReleaseRFile', task ':path_provider_android:javaPreCompileRelease', task ':path_provider_android:compileReleaseJavaWithJavac', task ':path_provider_android:mergeReleaseGeneratedProguardFiles', task ':path_provider_android:exportReleaseConsumerProguardFiles', task ':permission_handler_android:generateReleaseResValues', task ':permission_handler_android:generateReleaseResources', task ':permission_handler_android:packageReleaseResources', task ':permission_handler_android:parseReleaseLocalResources', task ':permission_handler_android:generateReleaseRFile', task ':permission_handler_android:javaPreCompileRelease', task ':permission_handler_android:compileReleaseJavaWithJavac', task ':permission_handler_android:mergeReleaseGeneratedProguardFiles', task ':permission_handler_android:exportReleaseConsumerProguardFiles', task ':reactive_ble_mobile:checkKotlinGradlePluginConfigurationErrors', task ':reactive_ble_mobile:extractIncludeReleaseProto', task ':reactive_ble_mobile:extractProto', task ':reactive_ble_mobile:extractReleaseProto', task ':reactive_ble_mobile:generateReleaseProto', task ':reactive_ble_mobile:generateReleaseResValues', task ':reactive_ble_mobile:generateReleaseResources', task ':reactive_ble_mobile:packageReleaseResources', task ':reactive_ble_mobile:parseReleaseLocalResources', task ':reactive_ble_mobile:generateReleaseRFile', task ':reactive_ble_mobile:compileReleaseKotlin', task ':reactive_ble_mobile:javaPreCompileRelease', task ':reactive_ble_mobile:compileReleaseJavaWithJavac', task ':reactive_ble_mobile:mergeReleaseGeneratedProguardFiles', task ':reactive_ble_mobile:exportReleaseConsumerProguardFiles', task ':app:buildKotlinToolingMetadata', task ':app:checkReleaseDuplicateClasses', task ':app:checkKotlinGradlePluginConfigurationErrors', task ':mobile_scanner:writeReleaseAarMetadata', task ':path_provider_android:writeReleaseAarMetadata', task ':permission_handler_android:writeReleaseAarMetadata', task ':reactive_ble_mobile:writeReleaseAarMetadata', task ':app:checkReleaseAarMetadata', task ':app:cleanMergeReleaseAssets', task ':app:mergeReleaseShaders', task ':app:compileReleaseShaders', task ':app:generateReleaseAssets', task ':mobile_scanner:mergeReleaseShaders', task ':mobile_scanner:compileReleaseShaders', task ':mobile_scanner:generateReleaseAssets', task ':mobile_scanner:mergeReleaseAssets', task ':path_provider_android:mergeReleaseShaders', task ':path_provider_android:compileReleaseShaders', task ':path_provider_android:generateReleaseAssets', task ':path_provider_android:mergeReleaseAssets', task ':permission_handler_android:mergeReleaseShaders', task ':permission_handler_android:compileReleaseShaders', task ':permission_handler_android:generateReleaseAssets', task ':permission_handler_android:mergeReleaseAssets', task ':reactive_ble_mobile:mergeReleaseShaders', task ':reactive_ble_mobile:compileReleaseShaders', task ':reactive_ble_mobile:generateReleaseAssets', task ':reactive_ble_mobile:mergeReleaseAssets', task ':app:mergeReleaseAssets', task ':app:copyFlutterAssetsRelease', task ':app:generateReleaseResValues', task ':app:mapReleaseSourceSetPaths', task ':app:generateReleaseResources', task ':app:mergeReleaseResources', task ':app:packageReleaseResources', task ':app:parseReleaseLocalResources', task ':app:createReleaseCompatibleScreenManifests', task ':app:extractDeepLinksRelease', task ':mobile_scanner:extractDeepLinksRelease', task ':mobile_scanner:processReleaseManifest', task ':path_provider_android:extractDeepLinksRelease', task ':path_provider_android:processReleaseManifest', task ':permission_handler_android:extractDeepLinksRelease', task ':permission_handler_android:processReleaseManifest', task ':reactive_ble_mobile:extractDeepLinksRelease', task ':reactive_ble_mobile:processReleaseManifest', task ':app:processReleaseMainManifest', task ':app:outputReleaseAppLinkSettings', task ':app:processReleaseManifest', task ':app:processReleaseManifestForPackage', task ':app:processReleaseResources', task ':mobile_scanner:bundleLibCompileToJarRelease', task ':path_provider_android:bundleLibCompileToJarRelease', task ':permission_handler_android:bundleLibCompileToJarRelease', task ':reactive_ble_mobile:bundleLibCompileToJarRelease', task ':app:compileReleaseKotlin', task ':app:javaPreCompileRelease', task ':app:compileReleaseJavaWithJavac', task ':mobile_scanner:prepareReleaseArtProfile', task ':path_provider_android:prepareReleaseArtProfile', task ':permission_handler_android:prepareReleaseArtProfile', task ':reactive_ble_mobile:prepareReleaseArtProfile', task ':app:mergeReleaseArtProfile', task ':mobile_scanner:bundleLibRuntimeToJarRelease', task ':path_provider_android:bundleLibRuntimeToJarRelease', task ':permission_handler_android:bundleLibRuntimeToJarRelease', task ':reactive_ble_mobile:bundleLibRuntimeToJarRelease', task ':app:expandReleaseArtProfileWildcards', task ':app:extractProguardFiles', task ':app:mergeReleaseGeneratedProguardFiles', task ':app:processReleaseJavaRes', task ':mobile_scanner:processReleaseJavaRes', task ':path_provider_android:processReleaseJavaRes', task ':permission_handler_android:processReleaseJavaRes', task ':reactive_ble_mobile:processReleaseJavaRes', task ':app:mergeReleaseJavaResource', task ':app:mergeReleaseStartupProfile', task ':app:minifyReleaseWithR8', task ':app:compileReleaseArtProfile', task ':app:compressReleaseAssets', task ':app:extractReleaseVersionControlInfo', task ':mobile_scanner:createFullJarRelease', task ':mobile_scanner:extractProguardFiles', task ':mobile_scanner:generateReleaseLintModel', task ':mobile_scanner:prepareLintJarForPublish', task ':path_provider_android:createFullJarRelease', task ':path_provider_android:extractProguardFiles', task ':path_provider_android:generateReleaseLintModel', task ':path_provider_android:prepareLintJarForPublish', task ':permission_handler_android:createFullJarRelease', task ':permission_handler_android:extractProguardFiles', task ':permission_handler_android:generateReleaseLintModel', task ':permission_handler_android:prepareLintJarForPublish', task ':reactive_ble_mobile:createFullJarRelease', task ':reactive_ble_mobile:extractProguardFiles', task ':reactive_ble_mobile:generateReleaseLintModel', task ':reactive_ble_mobile:prepareLintJarForPublish', task ':app:generateReleaseLintVitalReportModel', task ':mobile_scanner:stripReleaseDebugSymbols', task ':mobile_scanner:copyReleaseJniLibsProjectAndLocalJars', task ':mobile_scanner:extractDeepLinksForAarRelease', task ':mobile_scanner:extractReleaseAnnotations', task ':mobile_scanner:mergeReleaseConsumerProguardFiles', task ':mobile_scanner:mergeReleaseJavaResource', task ':mobile_scanner:syncReleaseLibJars', task ':mobile_scanner:bundleReleaseLocalLintAar', task ':path_provider_android:stripReleaseDebugSymbols', task ':path_provider_android:copyReleaseJniLibsProjectAndLocalJars', task ':path_provider_android:extractDeepLinksForAarRelease', task ':path_provider_android:extractReleaseAnnotations', task ':path_provider_android:mergeReleaseConsumerProguardFiles', task ':path_provider_android:mergeReleaseJavaResource', task ':path_provider_android:syncReleaseLibJars', task ':path_provider_android:bundleReleaseLocalLintAar', task ':permission_handler_android:stripReleaseDebugSymbols', task ':permission_handler_android:copyReleaseJniLibsProjectAndLocalJars', task ':permission_handler_android:extractDeepLinksForAarRelease', task ':permission_handler_android:extractReleaseAnnotations', task ':permission_handler_android:mergeReleaseConsumerProguardFiles', task ':permission_handler_android:mergeReleaseJavaResource', task ':permission_handler_android:syncReleaseLibJars', task ':permission_handler_android:bundleReleaseLocalLintAar', task ':reactive_ble_mobile:stripReleaseDebugSymbols', task ':reactive_ble_mobile:copyReleaseJniLibsProjectAndLocalJars', task ':reactive_ble_mobile:extractDeepLinksForAarRelease', task ':reactive_ble_mobile:extractReleaseAnnotations', task ':reactive_ble_mobile:mergeReleaseConsumerProguardFiles', task ':reactive_ble_mobile:mergeReleaseJavaResource', task ':reactive_ble_mobile:syncReleaseLibJars', task ':reactive_ble_mobile:bundleReleaseLocalLintAar', task ':mobile_scanner:lintVitalAnalyzeRelease', task ':mobile_scanner:writeReleaseLintModelMetadata', task ':path_provider_android:lintVitalAnalyzeRelease', task ':path_provider_android:writeReleaseLintModelMetadata', task ':permission_handler_android:lintVitalAnalyzeRelease', task ':permission_handler_android:writeReleaseLintModelMetadata', task ':reactive_ble_mobile:lintVitalAnalyzeRelease', task ':reactive_ble_mobile:writeReleaseLintModelMetadata', task ':app:lintVitalAnalyzeRelease', task ':mobile_scanner:generateReleaseLintVitalModel', task ':path_provider_android:generateReleaseLintVitalModel', task ':permission_handler_android:generateReleaseLintVitalModel', task ':reactive_ble_mobile:generateReleaseLintVitalModel', task ':app:lintVitalReportRelease', task ':app:lintVitalRelease', task ':app:convertShrunkResourcesToBinaryRelease', task ':app:optimizeReleaseResources', task ':app:collectReleaseDependencies', task ':app:sdkReleaseDependencyData', task ':app:validateSigningRelease', task ':app:writeReleaseAppMetadata', task ':app:writeReleaseSigningConfigVersions', task ':app:packageRelease', task ':app:createReleaseApkListingFileRedirect', task ':app:assembleRelease', task ':mobile_scanner:bundleReleaseAar', task ':mobile_scanner:mapReleaseSourceSetPaths', task ':mobile_scanner:mergeReleaseResources', task ':mobile_scanner:verifyReleaseResources', task ':mobile_scanner:assembleRelease', task ':path_provider_android:bundleReleaseAar', task ':path_provider_android:mapReleaseSourceSetPaths', task ':path_provider_android:mergeReleaseResources', task ':path_provider_android:verifyReleaseResources', task ':path_provider_android:assembleRelease', task ':permission_handler_android:bundleReleaseAar', task ':permission_handler_android:mapReleaseSourceSetPaths', task ':permission_handler_android:mergeReleaseResources', task ':permission_handler_android:verifyReleaseResources', task ':permission_handler_android:assembleRelease', task ':reactive_ble_mobile:bundleReleaseAar', task ':reactive_ble_mobile:mapReleaseSourceSetPaths', task ':reactive_ble_mobile:mergeReleaseResources', task ':reactive_ble_mobile:verifyReleaseResources', task ':reactive_ble_mobile:assembleRelease']
+[        ] Tasks that were excluded: []
+[        ] work action Parameters of FilterShrinkerRulesTransform (Thread[#516,Execution worker Thread 6,5,main]) started.
+[        ] work action Parameters of ExtractAarTransform (Thread[#516,Execution worker Thread 6,5,main]) started.
+[        ] Resolve mutations for :app:ReleaseMinSdkCheck (Thread[#513,Execution worker Thread 3,5,main]) started.
+[        ] :app:ReleaseMinSdkCheck (Thread[#513,Execution worker Thread 3,5,main]) started.
+[        ] > Task :app:ReleaseMinSdkCheck
+[        ] Caching disabled for task ':app:ReleaseMinSdkCheck' because:
+[        ]   Build cache is disabled
+[        ] Task ':app:ReleaseMinSdkCheck' is not up-to-date because:
+[        ]   Task has not declared any outputs despite executing actions.
+[        ] Resolve mutations for :app:compileFlutterBuildRelease (Thread[#513,Execution worker Thread 3,5,main]) started.
+[        ] :app:compileFlutterBuildRelease (Thread[#513,Execution worker Thread 3,5,main]) started.
+[+1994 ms] > Task :app:compileFlutterBuildRelease
+[        ] Caching disabled for task ':app:compileFlutterBuildRelease' because:
+[        ]   Build cache is disabled
+[        ]   Caching has not been enabled for the task
+[        ] Task ':app:compileFlutterBuildRelease' is not up-to-date because:
+[        ]   Task has failed previously.
+[        ] Starting process 'command 'D:\src\flutter\bin\flutter.bat''. Working directory: D:\MobileAppPark\intelligent_parking_app Command: D:\src\flutter\bin\flutter.bat --verbose assemble --no-version-check --depfile D:\MobileAppPark\intelligent_parking_app\build\app\intermediates\flutter\release/flutter_build.d --output D:\MobileAppPark\intelligent_parking_app\build\app\intermediates\flutter\release -dTargetFile=lib\main.dart -dTargetPlatform=android -dBuildMode=release -dTrackWidgetCreation=true -dTreeShakeIcons=true --DartDefines=RkxVVFRFUl9WRVJTSU9OPTMuNDEuNA==,RkxVVFRFUl9DSEFOTkVMPXN0YWJsZQ==,RkxVVFRFUl9HSVRfVVJMPWh0dHBzOi8vZ2l0aHViLmNvbS9mbHV0dGVyL2ZsdXR0ZXIuZ2l0,RkxVVFRFUl9GUkFNRVdPUktfUkVWSVNJT049ZmYzN2JlZjYwMw==,RkxVVFRFUl9FTkdJTkVfUkVWSVNJT049ZTRiOGRjYTNmMQ==,RkxVVFRFUl9EQVJUX1ZFUlNJT049My4xMS4x -dFlavor= -dAndroidArchs=android-arm android-arm64 android-x64 -dMinSdkVersion=24 android_aot_bundle_release_android-arm android_aot_bundle_release_android-arm64 android_aot_bundle_release_android-x64
+[        ] Successfully started process 'command 'D:\src\flutter\bin\flutter.bat''
+[        ] [ +150 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'GradleWrapper' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] [   +1 ms] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterSdk' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
+[        ] [  +13 ms] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterEngineStamp' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] [   +2 ms] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] [  +70 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'GradleWrapper' is not required, skipping update.
+[        ] [   +2 ms] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterEngineStamp' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterSdk' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
+[        ] [  +32 ms] Initializing file store
+[        ] [  +21 ms] Done initializing file store
+[        ] [ +137 ms] Skipping target: gen_dart_plugin_registrant
+[        ] [   +3 ms] Skipping target: dart_build
+[        ] [        ] Skipping target: gen_localizations
+[        ] [   +1 ms] Skipping target: install_code_assets
+[  +82 ms] [ +606 ms] kernel_snapshot_program: Starting due to {InvalidatedReasonKind.outputSetAddition: The following outputs were added to the output set: D:\MobileAppPark\intelligent_parking_app\.dart_tool\flutter_build\80da6b81c08535e652e6a4c32c9fd070\app.dill, InvalidatedReasonKind.inputChanged: The following inputs have updated contents: D:\MobileAppPark\intelligent_parking_app\lib\features\navigation\presentation\space_selection_sheet.dart}
+[  +95 ms] [  +17 ms] D:\src\flutter\bin\cache\dart-sdk\bin\dartaotruntime.exe D:\src\flutter\bin\cache\dart-sdk\bin\snapshots\frontend_server_aot.dart.snapshot --sdk-root D:\src\flutter\bin\cache\artifacts\engine\common\flutter_patched_sdk_product/ --target=flutter --no-print-incremental-dependencies -DFLUTTER_VERSION=3.41.4 -DFLUTTER_CHANNEL=stable -DFLUTTER_GIT_URL=https://github.com/flutter/flutter.git -DFLUTTER_FRAMEWORK_REVISION=ff37bef603 -DFLUTTER_ENGINE_REVISION=e4b8dca3f1 -DFLUTTER_DART_VERSION=3.11.1 -DFLUTTER_APP_FLAVOR= -Ddart.vm.profile=false -Ddart.vm.product=true --delete-tostring-package-uri=dart:ui --delete-tostring-package-uri=package:flutter --aot --tfa --target-os android --packages D:\MobileAppPark\intelligent_parking_app\.dart_tool\package_config.json --output-dill D:\MobileAppPark\intelligent_parking_app\.dart_tool\flutter_build\80da6b81c08535e652e6a4c32c9fd070\app.dill --depfile D:\MobileAppPark\intelligent_parking_app\.dart_tool\flutter_build\80da6b81c08535e652e6a4c32c9fd070\kernel_snapshot_program.d --source file:///D:/MobileAppPark/intelligent_parking_app/.dart_tool/flutter_build/dart_plugin_registrant.dart --source package:flutter/src/dart_plugin_registrant.dart -Dflutter.dart_plugin_registrant=file:///D:/MobileAppPark/intelligent_parking_app/.dart_tool/flutter_build/dart_plugin_registrant.dart --verbosity=error package:intelligent_parking_app/main.dart
+flutter : [+1900 ms] [+
+1954 ms] lib/features/n
+avigation/application/n
+avigation_providers.dar
+t:25:37: Error: Type 'S
+tateNotifier' not found
+.
+At line:1 char:1
++ flutter build apk --r
+elease --verbose > buil
+d_log.txt 2>&1; Get-Con
+te ...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: ([+1900 ms] [+   
+ 19...ier' not foun    
+d.:String) [], Rem    o
+teException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+[   +1 ms] [   +1 ms] c
+lass ParkingSpacesNotif
+ier extends StateNotifi
+er<List<ParkingSpace>> 
+{
+[        ] [        ]  
+                       
+            ^^^^^^^^^^^
+^^
+[ +900 ms] [ +856 ms] l
+ib/features/navigation/
+application/navigation_
+providers.dart:11:31: E
+rror: Method not found:
+ 'StateProvider'.
+[        ] [        ] f
+inal vehicleStatusProvi
+der = StateProvider<Veh
+icleStatus>((ref) => Ve
+hicleStatus.disconnecte
+d);
+[        ] [        ]  
+                       
+      ^^^^^^^^^^^^^
+[        ] [        ] l
+ib/features/navigation/
+application/navigation_
+providers.dart:47:31: E
+rror: Method not found:
+ 'StateNotifierProvider
+'.
+[        ] [        ] f
+inal parkingSpacesProvi
+der = StateNotifierProv
+ider<ParkingSpacesNotif
+ier, List<ParkingSpace>
+>((ref) {
+[        ] [        ]  
+                       
+      ^^^^^^^^^^^^^^^^^
+^^^^
+[        ] [        ] l
+ib/features/navigation/
+application/navigation_
+providers.dart:51:38: E
+rror: Method not found:
+ 'StateProvider'.
+[        ] [        ] f
+inal selectedParkingSpa
+ceProvider = StateProvi
+der<ParkingSpace?>((ref
+) => null);
+[        ] [        ]  
+                       
+             ^^^^^^^^^^
+^^^
+[+1908 ms] [+1882 ms] l
+ib/features/navigation/
+application/navigation_
+providers.dart:32:10: E
+rror: The getter 'state
+' isn't defined for the
+ type 'ParkingSpacesNot
+ifier'.
+[        ] [        ]  
+- 'ParkingSpacesNotifie
+r' is from 'package:int
+elligent_parking_app/fe
+atures/navigation/appli
+cation/navigation_provi
+ders.dart' ('lib/featur
+es/navigation/applicati
+on/navigation_providers
+.dart').
+[        ] [        ] T
+ry correcting the name 
+to the name of an exist
+ing getter, or defining
+ a getter or field name
+d 'state'.
+[        ] [        ]  
+     ...state,
+[        ] [        ]  
+        ^^^^^
+[        ] [        ] l
+ib/features/navigation/
+application/navigation_
+providers.dart:31:5: Er
+ror: The setter 'state'
+ isn't defined for the 
+type 'ParkingSpacesNoti
+fier'.
+[        ] [        ]  
+- 'ParkingSpacesNotifie
+r' is from 'package:int
+elligent_parking_app/fe
+atures/navigation/appli
+cation/navigation_provi
+ders.dart' ('lib/featur
+es/navigation/applicati
+on/navigation_providers
+.dart').
+[        ] [        ] T
+ry correcting the name 
+to the name of an exist
+ing setter, or defining
+ a setter or field name
+d 'state'.
+[        ] [        ]  
+   state = [
+[        ] [        ]  
+   ^^^^^
+[        ] [        ] l
+ib/features/navigation/
+application/navigation_
+providers.dart:43:13: E
+rror: The getter 'state
+' isn't defined for the
+ type 'ParkingSpacesNot
+ifier'.
+[        ] [        ]  
+- 'ParkingSpacesNotifie
+r' is from 'package:int
+elligent_parking_app/fe
+atures/navigation/appli
+cation/navigation_provi
+ders.dart' ('lib/featur
+es/navigation/applicati
+on/navigation_providers
+.dart').
+[        ] [        ] T
+ry correcting the name 
+to the name of an exist
+ing getter, or defining
+ a getter or field name
+d 'state'.
+[        ] [        ]  
+   state = state.where(
+(s) => s.id != id).toLi
+st();
+[        ] [        ]  
+           ^^^^^
+[        ] [        ] l
+ib/features/navigation/
+application/navigation_
+providers.dart:43:5: Er
+ror: The setter 'state'
+ isn't defined for the 
+type 'ParkingSpacesNoti
+fier'.
+[        ] [        ]  
+- 'ParkingSpacesNotifie
+r' is from 'package:int
+elligent_parking_app/fe
+atures/navigation/appli
+cation/navigation_provi
+ders.dart' ('lib/featur
+es/navigation/applicati
+on/navigation_providers
+.dart').
+[        ] [        ] T
+ry correcting the name 
+to the name of an exist
+ing setter, or defining
+ a setter or field name
+d 'state'.
+[        ] [        ]  
+   state = state.where(
+(s) => s.id != id).toLi
+st();
+[        ] [        ]  
+   ^^^^^
+[+7295 ms] [+7329 ms] Persisting file store
+[        ] [  +17 ms] Done persisting file store
+[        ] [   +3 ms] T
+arget kernel_snapshot_p
+rogram failed: Exceptio
+n
+[        ]            #
+0      KernelSnapshot.b
+uild (package:flutter_t
+ools/src/build_system/t
+argets/common.dart:289:
+7)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+1      _BuildInstance._
+invokeInternal (package
+:flutter_tools/src/buil
+d_system/build_system.d
+art:937:9)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+2      Future.wait.<ano
+nymous closure> (dart:a
+sync/future.dart:546:21
+)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+3      _BuildInstance.i
+nvokeTarget (package:fl
+utter_tools/src/build_s
+ystem/build_system.dart
+:875:32)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+4      Future.wait.<ano
+nymous closure> (dart:a
+sync/future.dart:546:21
+)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+5      _BuildInstance.i
+nvokeTarget (package:fl
+utter_tools/src/build_s
+ystem/build_system.dart
+:875:32)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+6      Future.wait.<ano
+nymous closure> (dart:a
+sync/future.dart:546:21
+)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+7      _BuildInstance.i
+nvokeTarget (package:fl
+utter_tools/src/build_s
+ystem/build_system.dart
+:875:32)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+8      FlutterBuildSyst
+em.build (package:flutt
+er_tools/src/build_syst
+em/build_system.dart:68
+4:16)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+9      AssembleCommand.
+runCommand (package:flu
+tter_tools/src/commands
+/assemble.dart:365:32)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+10     FlutterCommand.r
+un.<anonymous closure> 
+(package:flutter_tools/
+src/runner/flutter_comm
+and.dart:1590:27)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+11     AppContext.run.<
+anonymous closure> (pac
+kage:flutter_tools/src/
+base/context.dart:154:1
+9)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+12     CommandRunner.ru
+nCommand (package:args/
+command_runner.dart:212
+:13)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+13     FlutterCommandRu
+nner.runCommand.<anonym
+ous closure> (package:f
+lutter_tools/src/runner
+/flutter_command_runner
+.dart:496:9)
+[        ] [   +1 ms] "flutter assemble" took 12.954ms.
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+14     AppContext.run.<
+anonymous closure> (pac
+kage:flutter_tools/src/
+base/context.dart:154:1
+9)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+15     FlutterCommandRu
+nner.runCommand (packag
+e:flutter_tools/src/run
+ner/flutter_command_run
+ner.dart:431:5)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+16     FlutterCommandRu
+nner.run.<anonymous clo
+sure> (package:flutter_
+tools/src/runner/flutte
+r_command_runner.dart:3
+07:33)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+17     run.<anonymous c
+losure>.<anonymous clos
+ure> (package:flutter_t
+ools/runner.dart:104:11
+)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+18     AppContext.run.<
+anonymous closure> (pac
+kage:flutter_tools/src/
+base/context.dart:154:1
+9)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+19     main (package:fl
+utter_tools/executable.
+dart:103:3)
+[        ]            <
+asynchronous suspension
+>
+[  +96 ms] [  +80 ms] 
+[        ]            #
+0      throwToolExit (p
+ackage:flutter_tools/sr
+c/base/common.dart:34:3
+)
+[        ]            #
+1      AssembleCommand.
+runCommand (package:flu
+tter_tools/src/commands
+/assemble.dart:383:7)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+2      FlutterCommand.r
+un.<anonymous closure> 
+(package:flutter_tools/
+src/runner/flutter_comm
+and.dart:1590:27)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+3      AppContext.run.<
+anonymous closure> (pac
+kage:flutter_tools/src/
+base/context.dart:154:1
+9)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+4      CommandRunner.ru
+nCommand (package:args/
+command_runner.dart:212
+:13)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+5      FlutterCommandRu
+nner.runCommand.<anonym
+ous closure> (package:f
+lutter_tools/src/runner
+/flutter_command_runner
+.dart:496:9)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+6      AppContext.run.<
+anonymous closure> (pac
+kage:flutter_tools/src/
+base/context.dart:154:1
+9)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+7      FlutterCommandRu
+nner.runCommand (packag
+e:flutter_tools/src/run
+ner/flutter_command_run
+ner.dart:431:5)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+8      FlutterCommandRu
+nner.run.<anonymous clo
+sure> (package:flutter_
+tools/src/runner/flutte
+r_command_runner.dart:3
+07:33)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+9      run.<anonymous c
+losure>.<anonymous clos
+ure> (package:flutter_t
+ools/runner.dart:104:11
+)
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+10     AppContext.run.<
+anonymous closure> (pac
+kage:flutter_tools/src/
+base/context.dart:154:1
+9)
+[        ] [        ] Running 1 shutdown hook
+[        ] [   +1 ms] Shutdown hooks complete
+[        ]            <
+asynchronous suspension
+>
+[        ]            #
+11     main (package:fl
+utter_tools/executable.
+dart:103:3)
+[        ]            <
+asynchronous suspension
+>
+[  +93 ms] [ +167 ms] exiting with code 1
+[ +100 ms] > Task :app:compileFlutterBuildRelease FAILED
+[        ] Build e76bfcec-6c90-49ce-884e-325af00b0dfc is closed
+[        ] [Incubating] Problems report is available at: file:///D:/MobileAppPark/intelligent_parking_app/build/reports/problems/problems-report.html
+[        ] FAILURE: Bui
+ld failed with an excep
+tion.
+[        ] * What went 
+wrong:
+[        ] Execution fa
+iled for task ':app:com
+pileFlutterBuildRelease
+'.
+[        ] > Process 'c
+ommand 'D:\src\flutter\
+bin\flutter.bat'' finis
+hed with non-zero exit 
+value 1
+[        ] * Try:
+[        ] > Run with -
+-debug option to get mo
+re log output.
+[        ] > Run with -
+-scan to get full insig
+hts.
+[        ] > Get more h
+elp at https://help.gra
+dle.org.
+[        ] * Exception 
+is:
+[        ] org.gradle.a
+pi.tasks.TaskExecutionE
+xception: Execution fai
+led for task ':app:comp
+ileFlutterBuildRelease'
+.
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.ExecuteActions
+TaskExecuter.lambda$exe
+cuteIfValid$1(ExecuteAc
+tionsTaskExecuter.java:
+130)
+[        ] 	at org.grad
+le.internal.Try$Failure
+.ifSuccessfulOrElse(Try
+.java:293)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.ExecuteActions
+TaskExecuter.executeIfV
+alid(ExecuteActionsTask
+Executer.java:128)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.ExecuteActions
+TaskExecuter.execute(Ex
+ecuteActionsTaskExecute
+r.java:116)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.ProblemsTaskPa
+thTrackingTaskExecuter.
+execute(ProblemsTaskPat
+hTrackingTaskExecuter.j
+ava:41)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.FinalizeProper
+tiesTaskExecuter.execut
+e(FinalizePropertiesTas
+kExecuter.java:46)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.ResolveTaskExe
+cutionModeExecuter.exec
+ute(ResolveTaskExecutio
+nModeExecuter.java:51)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.SkipTaskWithNo
+ActionsExecuter.execute
+(SkipTaskWithNoActionsE
+xecuter.java:57)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.SkipOnlyIfTask
+Executer.execute(SkipOn
+lyIfTaskExecuter.java:7
+4)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.CatchException
+TaskExecuter.execute(Ca
+tchExceptionTaskExecute
+r.java:36)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.EventFiringTas
+kExecuter$1.executeTask
+(EventFiringTaskExecute
+r.java:77)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.EventFiringTas
+kExecuter$1.call(EventF
+iringTaskExecuter.java:
+55)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.EventFiringTas
+kExecuter$1.call(EventF
+iringTaskExecuter.java:
+52)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$CallableBuildOpera
+tionWorker.execute(Defa
+ultBuildOperationRunner
+.java:210)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$CallableBuildOpera
+tionWorker.execute(Defa
+ultBuildOperationRunner
+.java:205)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$2.execute(DefaultB
+uildOperationRunner.jav
+a:67)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$2.execute(DefaultB
+uildOperationRunner.jav
+a:60)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.execute(DefaultBui
+ldOperationRunner.java:
+167)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.execute(DefaultBui
+ldOperationRunner.java:
+60)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.call(DefaultBuildO
+perationRunner.java:54)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.EventFiringTas
+kExecuter.execute(Event
+FiringTaskExecuter.java
+:52)
+[        ] 	at org.grad
+le.execution.plan.Local
+TaskNodeExecutor.execut
+e(LocalTaskNodeExecutor
+.java:42)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph$InvokeNodeExecutorsA
+ction.execute(DefaultTa
+skExecutionGraph.java:3
+31)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph$InvokeNodeExecutorsA
+ction.execute(DefaultTa
+skExecutionGraph.java:3
+18)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph$BuildOperationAwareE
+xecutionAction.lambda$e
+xecute$0(DefaultTaskExe
+cutionGraph.java:314)
+[        ] 	at org.grad
+le.internal.operations.
+CurrentBuildOperationRe
+f.with(CurrentBuildOper
+ationRef.java:85)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph$BuildOperationAwareE
+xecutionAction.execute(
+DefaultTaskExecutionGra
+ph.java:314)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph$BuildOperationAwareE
+xecutionAction.execute(
+DefaultTaskExecutionGra
+ph.java:303)
+[        ] 	at org.grad
+le.execution.plan.Defau
+ltPlanExecutor$Executor
+Worker.execute(DefaultP
+lanExecutor.java:459)
+[        ] 	at org.grad
+le.execution.plan.Defau
+ltPlanExecutor$Executor
+Worker.run(DefaultPlanE
+xecutor.java:376)
+[        ] 	at org.grad
+le.internal.concurrent.
+ExecutorPolicy$CatchAnd
+RecordFailures.onExecut
+e(ExecutorPolicy.java:6
+4)
+[        ] 	at org.grad
+le.internal.concurrent.
+AbstractManagedExecutor
+$1.run(AbstractManagedE
+xecutor.java:48)
+[        ] 	at java.bas
+e/java.util.concurrent.
+ThreadPoolExecutor.runW
+orker(Unknown Source)
+[        ] 	at java.bas
+e/java.util.concurrent.
+ThreadPoolExecutor$Work
+er.run(Unknown Source)
+[        ] 	at java.bas
+e/java.lang.Thread.run(
+Unknown Source)
+[        ] Caused by: o
+rg.gradle.process.inter
+nal.ExecException: Proc
+ess 'command 'D:\src\fl
+utter\bin\flutter.bat''
+ finished with non-zero
+ exit value 1
+[        ] 	at org.grad
+le.process.internal.Def
+aultExecHandle$ExecResu
+ltImpl.assertNormalExit
+Value(DefaultExecHandle
+.java:442)
+[        ] 	at org.grad
+le.process.internal.Def
+aultExecAction.execute(
+DefaultExecAction.java:
+49)
+[        ] 	at org.grad
+le.process.internal.Def
+aultExecActionFactory.e
+xec(DefaultExecActionFa
+ctory.java:216)
+[        ] 	at org.grad
+le.process.internal.Def
+aultExecOperations.exec
+(DefaultExecOperations.
+java:37)
+[        ] 	at com.flut
+ter.gradle.tasks.BaseFl
+utterTaskHelper.buildBu
+ndle(BaseFlutterTaskHel
+per.kt:159)
+[        ] 	at com.flut
+ter.gradle.tasks.BaseFl
+utterTask.buildBundle(B
+aseFlutterTask.kt:143)
+[        ] 	at com.flut
+ter.gradle.tasks.Flutte
+rTaskHelper.build$gradl
+e(FlutterTaskHelper.kt:
+90)
+[        ] 	at com.flut
+ter.gradle.tasks.Flutte
+rTask.build(FlutterTask
+.kt:51)
+[        ] 	at java.bas
+e/jdk.internal.reflect.
+DirectMethodHandleAcces
+sor.invoke(Unknown Sour
+ce)
+[        ] 	at java.bas
+e/java.lang.reflect.Met
+hod.invoke(Unknown Sour
+ce)
+[        ] 	at org.grad
+le.internal.reflect.Jav
+aMethod.invoke(JavaMeth
+od.java:125)
+[        ] 	at org.grad
+le.api.internal.project
+.taskfactory.StandardTa
+skAction.doExecute(Stan
+dardTaskAction.java:58)
+[        ] 	at org.grad
+le.api.internal.project
+.taskfactory.StandardTa
+skAction.execute(Standa
+rdTaskAction.java:51)
+[        ] 	at org.grad
+le.api.internal.project
+.taskfactory.StandardTa
+skAction.execute(Standa
+rdTaskAction.java:29)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.TaskExecution$
+3.run(TaskExecution.jav
+a:244)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$1.execute(DefaultB
+uildOperationRunner.jav
+a:30)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$1.execute(DefaultB
+uildOperationRunner.jav
+a:27)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$2.execute(DefaultB
+uildOperationRunner.jav
+a:67)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$2.execute(DefaultB
+uildOperationRunner.jav
+a:60)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.execute(DefaultBui
+ldOperationRunner.java:
+167)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.execute(DefaultBui
+ldOperationRunner.java:
+60)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.run(DefaultBuildOp
+erationRunner.java:48)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.TaskExecution.
+executeAction(TaskExecu
+tion.java:229)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.TaskExecution.
+executeActions(TaskExec
+ution.java:212)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.TaskExecution.
+executeWithPreviousOutp
+utFiles(TaskExecution.j
+ava:195)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.TaskExecution.
+execute(TaskExecution.j
+ava:162)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ExecuteStep.execut
+eInternal(ExecuteStep.j
+ava:105)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ExecuteStep.access
+$000(ExecuteStep.java:4
+4)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ExecuteStep$1.call
+(ExecuteStep.java:59)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ExecuteStep$1.call
+(ExecuteStep.java:56)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$CallableBuildOpera
+tionWorker.execute(Defa
+ultBuildOperationRunner
+.java:210)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$CallableBuildOpera
+tionWorker.execute(Defa
+ultBuildOperationRunner
+.java:205)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$2.execute(DefaultB
+uildOperationRunner.jav
+a:67)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$2.execute(DefaultB
+uildOperationRunner.jav
+a:60)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.execute(DefaultBui
+ldOperationRunner.java:
+167)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.execute(DefaultBui
+ldOperationRunner.java:
+60)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.call(DefaultBuildO
+perationRunner.java:54)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ExecuteStep.execut
+e(ExecuteStep.java:56)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ExecuteStep.execut
+e(ExecuteStep.java:44)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.CancelExecutionSte
+p.execute(CancelExecuti
+onStep.java:42)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.TimeoutStep.execut
+eWithoutTimeout(Timeout
+Step.java:75)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.TimeoutStep.execut
+e(TimeoutStep.java:55)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.PreCreateOutputPar
+entsStep.execute(PreCre
+ateOutputParentsStep.ja
+va:50)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.PreCreateOutputPar
+entsStep.execute(PreCre
+ateOutputParentsStep.ja
+va:28)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.RemovePreviousOutp
+utsStep.execute(RemoveP
+reviousOutputsStep.java
+:67)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.RemovePreviousOutp
+utsStep.execute(RemoveP
+reviousOutputsStep.java
+:37)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.BroadcastChangingO
+utputsStep.execute(Broa
+dcastChangingOutputsSte
+p.java:61)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.BroadcastChangingO
+utputsStep.execute(Broa
+dcastChangingOutputsSte
+p.java:26)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.CaptureOutputsAfte
+rExecutionStep.execute(
+CaptureOutputsAfterExec
+utionStep.java:69)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.CaptureOutputsAfte
+rExecutionStep.execute(
+CaptureOutputsAfterExec
+utionStep.java:46)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ResolveInputChange
+sStep.execute(ResolveIn
+putChangesStep.java:40)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ResolveInputChange
+sStep.execute(ResolveIn
+putChangesStep.java:29)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.BuildCacheStep.exe
+cuteWithoutCache(BuildC
+acheStep.java:189)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.BuildCacheStep.lam
+bda$execute$1(BuildCach
+eStep.java:75)
+[        ] 	at org.grad
+le.internal.Either$Righ
+t.fold(Either.java:175)
+[        ] 	at org.grad
+le.internal.execution.c
+aching.CachingState.fol
+d(CachingState.java:62)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.BuildCacheStep.exe
+cute(BuildCacheStep.jav
+a:73)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.BuildCacheStep.exe
+cute(BuildCacheStep.jav
+a:48)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.StoreExecutionStat
+eStep.execute(StoreExec
+utionStateStep.java:46)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.StoreExecutionStat
+eStep.execute(StoreExec
+utionStateStep.java:35)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.SkipUpToDateStep.e
+xecuteBecause(SkipUpToD
+ateStep.java:75)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.SkipUpToDateStep.l
+ambda$execute$2(SkipUpT
+oDateStep.java:53)
+[        ] 	at java.bas
+e/java.util.Optional.or
+ElseGet(Unknown Source)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.SkipUpToDateStep.e
+xecute(SkipUpToDateStep
+.java:53)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.SkipUpToDateStep.e
+xecute(SkipUpToDateStep
+.java:35)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.legacy.MarkSnapsho
+ttingInputsFinishedStep
+.execute(MarkSnapshotti
+ngInputsFinishedStep.ja
+va:37)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.legacy.MarkSnapsho
+ttingInputsFinishedStep
+.execute(MarkSnapshotti
+ngInputsFinishedStep.ja
+va:27)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ResolveIncremental
+CachingStateStep.execut
+eDelegate(ResolveIncrem
+entalCachingStateStep.j
+ava:49)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ResolveIncremental
+CachingStateStep.execut
+eDelegate(ResolveIncrem
+entalCachingStateStep.j
+ava:27)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.AbstractResolveCac
+hingStateStep.execute(A
+bstractResolveCachingSt
+ateStep.java:71)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.AbstractResolveCac
+hingStateStep.execute(A
+bstractResolveCachingSt
+ateStep.java:39)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ResolveChangesStep
+.execute(ResolveChanges
+Step.java:65)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ResolveChangesStep
+.execute(ResolveChanges
+Step.java:36)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ValidateStep.execu
+te(ValidateStep.java:10
+7)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ValidateStep.execu
+te(ValidateStep.java:56
+)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.AbstractCaptureSta
+teBeforeExecutionStep.e
+xecute(AbstractCaptureS
+tateBeforeExecutionStep
+.java:64)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.AbstractCaptureSta
+teBeforeExecutionStep.e
+xecute(AbstractCaptureS
+tateBeforeExecutionStep
+.java:43)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.AbstractSkipEmptyW
+orkStep.executeWithNonE
+mptySources(AbstractSki
+pEmptyWorkStep.java:125
+)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.AbstractSkipEmptyW
+orkStep.execute(Abstrac
+tSkipEmptyWorkStep.java
+:56)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.AbstractSkipEmptyW
+orkStep.execute(Abstrac
+tSkipEmptyWorkStep.java
+:36)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.legacy.MarkSnapsho
+ttingInputsStartedStep.
+execute(MarkSnapshottin
+gInputsStartedStep.java
+:38)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.LoadPreviousExecut
+ionStateStep.execute(Lo
+adPreviousExecutionStat
+eStep.java:36)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.LoadPreviousExecut
+ionStateStep.execute(Lo
+adPreviousExecutionStat
+eStep.java:23)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.HandleStaleOutputs
+Step.execute(HandleStal
+eOutputsStep.java:75)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.HandleStaleOutputs
+Step.execute(HandleStal
+eOutputsStep.java:41)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.AssignMutableWorks
+paceStep.lambda$execute
+$0(AssignMutableWorkspa
+ceStep.java:35)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.TaskExecution$
+4.withWorkspace(TaskExe
+cution.java:289)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.AssignMutableWorks
+paceStep.execute(Assign
+MutableWorkspaceStep.ja
+va:31)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.AssignMutableWorks
+paceStep.execute(Assign
+MutableWorkspaceStep.ja
+va:22)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ChoosePipelineStep
+.execute(ChoosePipeline
+Step.java:40)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ChoosePipelineStep
+.execute(ChoosePipeline
+Step.java:23)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ExecuteWorkBuildOp
+erationFiringStep.lambd
+a$execute$2(ExecuteWork
+BuildOperationFiringSte
+p.java:67)
+[        ] 	at java.bas
+e/java.util.Optional.or
+ElseGet(Unknown Source)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ExecuteWorkBuildOp
+erationFiringStep.execu
+te(ExecuteWorkBuildOper
+ationFiringStep.java:67
+)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ExecuteWorkBuildOp
+erationFiringStep.execu
+te(ExecuteWorkBuildOper
+ationFiringStep.java:39
+)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.IdentityCacheStep.
+execute(IdentityCacheSt
+ep.java:46)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.IdentityCacheStep.
+execute(IdentityCacheSt
+ep.java:34)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.IdentifyStep.execu
+te(IdentifyStep.java:48
+)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.IdentifyStep.execu
+te(IdentifyStep.java:35
+)
+[        ] 	at org.grad
+le.internal.execution.i
+mpl.DefaultExecutionEng
+ine$1.execute(DefaultEx
+ecutionEngine.java:64)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.ExecuteActions
+TaskExecuter.executeIfV
+alid(ExecuteActionsTask
+Executer.java:127)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.ExecuteActions
+TaskExecuter.execute(Ex
+ecuteActionsTaskExecute
+r.java:116)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.ProblemsTaskPa
+thTrackingTaskExecuter.
+execute(ProblemsTaskPat
+hTrackingTaskExecuter.j
+ava:41)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.FinalizeProper
+tiesTaskExecuter.execut
+e(FinalizePropertiesTas
+kExecuter.java:46)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.ResolveTaskExe
+cutionModeExecuter.exec
+ute(ResolveTaskExecutio
+nModeExecuter.java:51)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.SkipTaskWithNo
+ActionsExecuter.execute
+(SkipTaskWithNoActionsE
+xecuter.java:57)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.SkipOnlyIfTask
+Executer.execute(SkipOn
+lyIfTaskExecuter.java:7
+4)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.CatchException
+TaskExecuter.execute(Ca
+tchExceptionTaskExecute
+r.java:36)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.EventFiringTas
+kExecuter$1.executeTask
+(EventFiringTaskExecute
+r.java:77)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.EventFiringTas
+kExecuter$1.call(EventF
+iringTaskExecuter.java:
+55)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.EventFiringTas
+kExecuter$1.call(EventF
+iringTaskExecuter.java:
+52)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$CallableBuildOpera
+tionWorker.execute(Defa
+ultBuildOperationRunner
+.java:210)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$CallableBuildOpera
+tionWorker.execute(Defa
+ultBuildOperationRunner
+.java:205)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$2.execute(DefaultB
+uildOperationRunner.jav
+a:67)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$2.execute(DefaultB
+uildOperationRunner.jav
+a:60)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.execute(DefaultBui
+ldOperationRunner.java:
+167)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.execute(DefaultBui
+ldOperationRunner.java:
+60)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.call(DefaultBuildO
+perationRunner.java:54)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.EventFiringTas
+kExecuter.execute(Event
+FiringTaskExecuter.java
+:52)
+[        ] 	at org.grad
+le.execution.plan.Local
+TaskNodeExecutor.execut
+e(LocalTaskNodeExecutor
+.java:42)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph$InvokeNodeExecutorsA
+ction.execute(DefaultTa
+skExecutionGraph.java:3
+31)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph$InvokeNodeExecutorsA
+ction.execute(DefaultTa
+skExecutionGraph.java:3
+18)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph$BuildOperationAwareE
+xecutionAction.lambda$e
+xecute$0(DefaultTaskExe
+cutionGraph.java:314)
+[        ] 	at org.grad
+le.internal.operations.
+CurrentBuildOperationRe
+f.with(CurrentBuildOper
+ationRef.java:85)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph$BuildOperationAwareE
+xecutionAction.execute(
+DefaultTaskExecutionGra
+ph.java:314)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph$BuildOperationAwareE
+xecutionAction.execute(
+DefaultTaskExecutionGra
+ph.java:303)
+[        ] 	at org.grad
+le.execution.plan.Defau
+ltPlanExecutor$Executor
+Worker.execute(DefaultP
+lanExecutor.java:459)
+[        ] 	at org.grad
+le.execution.plan.Defau
+ltPlanExecutor$Executor
+Worker.run(DefaultPlanE
+xecutor.java:376)
+[        ] 	at org.grad
+le.internal.concurrent.
+ExecutorPolicy$CatchAnd
+RecordFailures.onExecut
+e(ExecutorPolicy.java:6
+4)
+[        ] 	at org.grad
+le.internal.concurrent.
+AbstractManagedExecutor
+$1.run(AbstractManagedE
+xecutor.java:48)
+[        ] 	at java.bas
+e/java.util.concurrent.
+ThreadPoolExecutor.runW
+orker(Unknown Source)
+[        ] 	at java.bas
+e/java.util.concurrent.
+ThreadPoolExecutor$Work
+er.run(Unknown Source)
+[        ] 	at java.bas
+e/java.lang.Thread.run(
+Unknown Source)
+[        ] BUILD FAILED
+ in 17s
+[        ] Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+[        ] You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+[        ] For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+[        ] 6 actionable tasks: 2 executed, 4 up-to-date
+[        ] Watched directory hierarchies: [D:\src\flutter\packages\flutter_tools\gradle]
+[ +101 ms] Running Gradle task 'assembleRelease'... (completed in 17,7s)
+[  +18 ms] "flutter apk" took 18.872ms.
+[  +77 ms] Gradle task 
+assembleRelease failed 
+with exit code 1
+[        ] 
+           #0      thro
+wToolExit (package:flut
+ter_tools/src/base/comm
+on.dart:34:3)
+           #1      Andr
+oidGradleBuilder.buildG
+radleApp (package:flutt
+er_tools/src/android/gr
+adle.dart:592:7)
+           <asynchronou
+s suspension>
+           #2      Andr
+oidGradleBuilder.buildA
+pk (package:flutter_too
+ls/src/android/gradle.d
+art:234:5)
+           <asynchronou
+s suspension>
+           #3      Buil
+dApkCommand.runCommand 
+(package:flutter_tools/
+src/commands/build_apk.
+dart:131:5)
+           <asynchronou
+s suspension>
+           #4      Flut
+terCommand.run.<anonymo
+us closure> (package:fl
+utter_tools/src/runner/
+flutter_command.dart:15
+90:27)
+           <asynchronou
+s suspension>
+           #5      AppC
+ontext.run.<anonymous c
+losure> (package:flutte
+r_tools/src/base/contex
+t.dart:154:19)
+           <asynchronou
+s suspension>
+           #6      Comm
+andRunner.runCommand (p
+ackage:args/command_run
+ner.dart:212:13)
+           <asynchronou
+s suspension>
+           #7      Flut
+terCommandRunner.runCom
+mand.<anonymous closure
+> (package:flutter_tool
+s/src/runner/flutter_co
+mmand_runner.dart:496:9
+)
+           <asynchronou
+s suspension>
+           #8      AppC
+ontext.run.<anonymous c
+losure> (package:flutte
+r_tools/src/base/contex
+t.dart:154:19)
+           <asynchronou
+s suspension>
+           #9      Flut
+terCommandRunner.runCom
+mand (package:flutter_t
+ools/src/runner/flutter
+_command_runner.dart:43
+1:5)
+           <asynchronou
+s suspension>
+           #10     Flut
+terCommandRunner.run.<a
+nonymous closure> (pack
+age:flutter_tools/src/r
+unner/flutter_command_r
+unner.dart:307:33)
+           <asynchronou
+s suspension>
+           #11     run.
+<anonymous closure>.<an
+onymous closure> (packa
+ge:flutter_tools/runner
+.dart:104:11)
+           <asynchronou
+s suspension>
+           #12     AppC
+ontext.run.<anonymous c
+losure> (package:flutte
+r_tools/src/base/contex
+t.dart:154:19)
+           <asynchronou
+s suspension>
+           #13     main
+ (package:flutter_tools
+/executable.dart:103:3)
+           <asynchronou
+s suspension>
+
+
+[        ] Running 1 shutdown hook
+[   +1 ms] Shutdown hooks complete
+[ +162 ms] exiting with code 1
