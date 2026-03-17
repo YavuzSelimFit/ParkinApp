@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../features/telemetry/presentation/telemetry_header.dart';
-import '../features/scanner/presentation/qr_scanner_overlay.dart';
+import '../features/scanner/presentation/aruco_scanner_view.dart';
 import '../features/navigation/application/navigation_providers.dart';
 import '../core/models/parking_space.dart';
 import '../core/theme/app_theme.dart';
@@ -162,9 +162,9 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
   void _learnNewSlot(int index) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => QRScannerOverlay(
-          onResult: (qrValue) {
-            ref.read(parkingSlotsProvider.notifier).assignQrToSlot(index, qrValue);
+        builder: (context) => ArUcoScannerView(
+          onResult: (arucoId) {
+            ref.read(parkingSlotsProvider.notifier).assignQrToSlot(index, arucoId);
             Navigator.pop(context);
           },
         ),

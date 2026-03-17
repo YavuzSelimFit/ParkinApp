@@ -1,12 +1,14 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/models/vehicle_state.dart';
 import '../../../core/models/parking_space.dart';
+import '../../scanner/application/aruco_scanner_service.dart';
 import '../../../services/hardware_communication_service.dart';
 
 import '../../../core/services/permission_service.dart';
 
 final hardwareServiceProvider = Provider((ref) => HardwareCommunicationService());
 final permissionServiceProvider = Provider((ref) => PermissionService());
+final arucoScannerServiceProvider = Provider((ref) => ArucoScannerService());
 
 final vehicleStatusProvider = StateProvider<VehicleStatus>((ref) {
   final service = ref.watch(hardwareServiceProvider);
