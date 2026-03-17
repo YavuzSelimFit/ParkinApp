@@ -114,7 +114,7 @@ class _TelemetryCapsule extends StatelessWidget {
   final IconData icon;
   final String label;
 
-  const _TelemetryCapsule({super.key, required this.icon, required this.label});
+  const _TelemetryCapsule({required this.icon, required this.label});
 
   @override
   Widget build(BuildContext context) {

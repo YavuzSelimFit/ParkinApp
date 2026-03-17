@@ -8,7 +8,7 @@ class AppColors {
   static const Color primaryContainer = Color(0xFF00E5FF);
   static const Color onPrimaryContainer = Color(0xFF131313);
   static const Color critical = Color(0xFFFF3B30); // Tertiary Warning Red
-  static const Color tertiary_container = critical;
+  static const Color tertiaryContainer = critical;
   
   // Tonal Layering (Surface Containers)
   static const Color surfaceLow = Color(0xFF1C1B1B);

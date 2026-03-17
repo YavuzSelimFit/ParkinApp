@@ -24,13 +24,30 @@ final vehicleStatusListenerProvider = Provider((ref) {
 });
 class ParkingSlot {
   final String label;
-  final ParkingSpace? space;
-  const ParkingSlot({required this.label, this.space});
+  final ParkingSpace? space; // Araç fiziksel olarak buradaysa dolu olur
+  final bool hasQrAssigned;  // QR ile bu slot araca rezerve edildiyse true olur
+  final String? qrValue;     // Okutulan QR verisi
+
+  const ParkingSlot({
+    required this.label,
+    this.space,
+    this.hasQrAssigned = false,
+    this.qrValue,
+  });
 
   bool get isOccupied => space != null;
 
-  ParkingSlot copyWith({ParkingSpace? space}) {
-    return ParkingSlot(label: label, space: space ?? this.space);
+  ParkingSlot copyWith({
+    ParkingSpace? space,
+    bool? hasQrAssigned,
+    String? qrValue,
+  }) {
+    return ParkingSlot(
+      label: label,
+      space: space ?? this.space,
+      hasQrAssigned: hasQrAssigned ?? this.hasQrAssigned,
+      qrValue: qrValue ?? this.qrValue,
+    );
   }
 }
 
@@ -48,20 +65,27 @@ class ParkingSlotsNotifier extends StateNotifier<List<ParkingSlot>> {
     const ParkingSlot(label: 'E2'),
   ]);
 
-  void updateSlot(int index, String qrValue) {
+  // SADECE QR OKUTULDUĞUNDA ÇAĞRILACAK (Hologramı başlatır)
+  void assignQrToSlot(int index, String qrData) {
     if (index < 0 || index >= state.length) return;
     
-    final currentSlot = state[index];
-    final newSpace = ParkingSpace(
-      id: 'slot_${currentSlot.label}',
-      label: currentSlot.label,
-      qrValue: qrValue,
-      coordinates: [0, 0],
-    );
-
     state = [
       for (int i = 0; i < state.length; i++)
-        if (i == index) currentSlot.copyWith(space: newSpace) else state[i],
+        if (i == index) 
+          state[i].copyWith(hasQrAssigned: true, qrValue: qrData) 
+        else state[i],
+    ];
+  }
+
+  // ARAÇ FİZİKSEL OLARAK PARK ETTİĞİNDE ÇAĞRILACAK (Arabayı gösterir)
+  void setVehicleParked(int index, ParkingSpace space) {
+    if (index < 0 || index >= state.length) return;
+    
+    state = [
+      for (int i = 0; i < state.length; i++)
+        if (i == index) 
+          state[i].copyWith(space: space) 
+        else state[i],
     ];
   }
 
