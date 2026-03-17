@@ -15,42 +15,15 @@ class DashboardScreen extends ConsumerStatefulWidget {
   ConsumerState<DashboardScreen> createState() => _DashboardScreenState();
 }
 
-class _DashboardScreenState extends ConsumerState<DashboardScreen> with SingleTickerProviderStateMixin {
-  late AnimationController _floatController;
-
-  @override
-  void initState() {
-    super.initState();
-    _floatController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 2),
-    )..repeat(reverse: true);
-  }
-
-  @override
-  void dispose() {
-    _floatController.dispose();
-    super.dispose();
-  }
-
+class _DashboardScreenState extends ConsumerState<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     final slots = ref.watch(parkingSlotsProvider);
     
     return Scaffold(
+      backgroundColor: const Color(0xFFF5F7F8), // Clean, modern light grey
       body: Stack(
         children: [
-          // Background Gradient
-          Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Color(0xFFFCFDFD), Color(0xFFF1FDF6)],
-              ),
-            ),
-          ),
-
           SafeArea(
             child: Column(
               children: [
@@ -60,10 +33,13 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> with SingleTi
                   signal: 94,
                 ),
                 
-                // Professional Asset-Based Isometric Scene
+                // Minimalist Horizontal Grid
                 Expanded(
                   child: buildProfessionalParkingLayout(slots),
                 ),
+                
+                // Bottom Spacing for Glass Footer
+                const SizedBox(height: 100),
               ],
             ),
           ),
@@ -117,53 +93,52 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> with SingleTi
   }
 
   Widget buildProfessionalParkingLayout(List<ParkingSlot> slots) {
-    // Magic Matrix4 for isometric perspective
-    Matrix4 isometricMatrix = Matrix4.identity()
-      ..setEntry(3, 2, 0.001) // Perspective depth
-      ..rotateX(-0.5) // Tilt back
-      ..rotateZ(0.7); // Rotate scene
-
-    return Center(
-      child: Transform(
-        transform: isometricMatrix,
-        alignment: FractionalOffset.center,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            // LAYER 1: BASE TEXTURE
-            Image.asset(
-              'assets/images/base_texture.png',
-              width: 800,
-              fit: BoxFit.cover,
-            ),
-
-            // LAYER 2: PARK SLOTS (2x5 Grid)
-            SizedBox(
-              width: 500,
-              height: 800,
-              child: GridView.count(
-                padding: const EdgeInsets.symmetric(vertical: 40),
-                crossAxisCount: 2,
-                mainAxisSpacing: 30,
-                crossAxisSpacing: 30,
-                childAspectRatio: 0.7,
-                physics: const NeverScrollableScrollPhysics(),
-                children: List.generate(slots.length, (index) {
-                  return ParkingSlotBuilder(
-                    index: index,
-                    onTap: () {
-                      if (slots[index].isOccupied) {
-                        _sendLocation(slots[index].space!);
-                      } else {
-                        _learnNewSlot(index);
-                      }
-                    },
-                  );
-                }),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Text(
+              'PARK ALANLARI',
+              style: GoogleFonts.spaceGrotesk(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey.shade600,
+                letterSpacing: 1.5,
               ),
             ),
-          ],
-        ),
+          ),
+          const SizedBox(height: 16),
+          // Sağa sola kaydırılabilir alan burada başlıyor
+          Expanded(
+            child: GridView.builder(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              scrollDirection: Axis.horizontal, // YATAY KAYDIRMA AÇIK
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, // 2 Satır
+                mainAxisSpacing: 16, // Yataydaki boşluklar
+                crossAxisSpacing: 16, // Dikeydeki boşluklar
+                childAspectRatio: 0.8, // Slot oranı
+              ),
+              itemCount: slots.length,
+              itemBuilder: (context, index) {
+                return CleanParkingSlotCard(
+                  slotData: slots[index],
+                  index: index,
+                  onTap: () {
+                    if (slots[index].isOccupied) {
+                      _sendLocation(slots[index].space!);
+                    } else {
+                      _learnNewSlot(index);
+                    }
+                  },
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -173,7 +148,6 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> with SingleTi
       MaterialPageRoute(
         builder: (context) => QRScannerOverlay(
           onResult: (qrValue) {
-            // SADECE QR OKUTULDUĞUNDA ÇAĞRILACAK (Hologramı başlatır)
             ref.read(parkingSlotsProvider.notifier).assignQrToSlot(index, qrValue);
             Navigator.pop(context);
           },
@@ -213,164 +187,120 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> with SingleTi
   }
 }
 
-class ParkingSlotBuilder extends ConsumerWidget {
+class CleanParkingSlotCard extends StatelessWidget {
+  final ParkingSlot slotData;
   final int index;
   final VoidCallback onTap;
 
-  const ParkingSlotBuilder({
+  const CleanParkingSlotCard({
     super.key,
+    required this.slotData,
     required this.index,
     required this.onTap,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // 1. Durumları Oku
-    final slotData = ref.watch(parkingSlotsProvider)[index];
-    final isOccupied = slotData.isOccupied; // Araç orada mı?
-    final hasQrAssigned = slotData.hasQrAssigned; // QR Atandı mı?
+  Widget build(BuildContext context) {
+    final isOccupied = slotData.isOccupied;
+    final hasQrAssigned = slotData.hasQrAssigned;
+
+    // Duruma göre renk ve sınır (border) ayarları
+    Color bgColor = Colors.white;
+    Color borderColor = Colors.grey.withValues(alpha: 0.1);
+    double borderWidth = 1.0;
+    Widget content = const SizedBox();
+
+    if (isOccupied) {
+      borderColor = AppColors.primary;
+      borderWidth = 2.0;
+      bgColor = AppColors.primary.withValues(alpha: 0.05);
+      content = Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.directions_car, size: 48, color: AppColors.primary),
+          const SizedBox(height: 12),
+          Text(
+            'PARK EDİLDİ',
+            style: GoogleFonts.inter(
+              fontSize: 10,
+              fontWeight: FontWeight.bold,
+              color: AppColors.primary,
+            ),
+          ),
+        ],
+      );
+    } else if (hasQrAssigned) {
+      borderColor = const Color(0xFF34C759); // Apple Green
+      borderWidth = 2.0;
+      bgColor = const Color(0xFF34C759).withValues(alpha: 0.05);
+      content = Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.qr_code_scanner, size: 36, color: Color(0xFF34C759)),
+          const SizedBox(height: 12),
+          Text(
+            'ARAÇ BEKLENİYOR',
+            textAlign: TextAlign.center,
+            style: GoogleFonts.inter(
+              fontSize: 10,
+              fontWeight: FontWeight.bold,
+              color: const Color(0xFF34C759),
+            ),
+          ),
+        ],
+      );
+    } else {
+      content = Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.add_circle_outline, size: 32, color: Colors.grey.shade300),
+          const SizedBox(height: 8),
+          Text(
+            'BOŞ',
+            style: GoogleFonts.inter(
+              fontSize: 10,
+              fontWeight: FontWeight.w600,
+              color: Colors.grey.shade400,
+            ),
+          ),
+        ],
+      );
+    }
 
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        color: Colors.transparent, // Ensure hit test works
-        child: Stack(
-          alignment: Alignment.center,
-          clipBehavior: Clip.none,
-          children: [
-            // LAYER 1: NEON SLOT LINES
-            Image.asset(
-              'assets/images/slot_line.png',
-              width: 180,
-            ),
-
-            // LAYER 2: STATUS INDICATORS (Hologram & Car)
-            
-            // Hologram QR (Visible when QR is assigned and car is not there)
-            if (hasQrAssigned && !isOccupied)
-              Positioned(
-                bottom: 20,
-                child: HoveringHologram(
-                  child: Opacity(
-                    opacity: 0.8,
-                    child: Image.asset(
-                      'assets/images/hologram_qr.png',
-                      width: 100,
-                    ),
-                  ),
-                ),
-              ),
-
-            // Cyberpunk Toy Car (Visible when occupied)
-            if (isOccupied)
-              Positioned(
-                top: -10,
-                child: Image.asset(
-                  'assets/images/toy_car.png',
-                  width: 140,
-                ),
-              )
-            else if (!hasQrAssigned)
-              // Floating "+" icon for empty slots (only if no QR assigned)
-              const HoveringHologram(
-                child: _AddIcon(),
-              ),
-
-            // LAYER 3: PERSPECTIVE LABEL
-            Positioned(
-              left: 10,
-              bottom: -10,
-              child: Transform(
-                transform: Matrix4.identity()
-                  ..rotateZ(-0.7)
-                  ..rotateX(1.1),
-                child: Text(
-                  slotData.label,
-                  style: GoogleFonts.spaceGrotesk(
-                    color: hasQrAssigned ? const Color(0xFF00E5FF) : Colors.white.withValues(alpha: 0.5),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                    shadows: hasQrAssigned 
-                      ? [const BoxShadow(color: Color(0xFF00E5FF), blurRadius: 8)] 
-                      : [],
-                  ),
-                ),
-              ),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        decoration: BoxDecoration(
+          color: bgColor,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: borderColor, width: borderWidth),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.02),
+              blurRadius: 20,
+              offset: const Offset(0, 10),
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class _AddIcon extends StatelessWidget {
-  const _AddIcon();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(8),
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Color(0xFF006D43), Color(0xFF00A86B)],
+        child: Stack(
+          children: [
+            Positioned(
+              top: 16,
+              left: 16,
+              child: Text(
+                slotData.label,
+                style: GoogleFonts.spaceGrotesk(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: isOccupied ? AppColors.primary : Colors.grey.shade800,
+                ),
+              ),
+            ),
+            Center(child: content),
+          ],
         ),
-        shape: BoxShape.circle,
-        boxShadow: [
-          BoxShadow(
-            color: Color(0x3300A86B),
-            blurRadius: 10,
-            spreadRadius: 2,
-          )
-        ],
       ),
-      child: const Icon(Icons.add, color: Colors.white, size: 16),
-    );
-  }
-}
-
-class HoveringHologram extends StatefulWidget {
-  final Widget child;
-  const HoveringHologram({super.key, required this.child});
-
-  @override
-  State<HoveringHologram> createState() => _HoveringHologramState();
-}
-
-class _HoveringHologramState extends State<HoveringHologram> with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _animation;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(seconds: 2),
-      vsync: this,
-    )..repeat(reverse: true);
-
-    _animation = Tween<double>(begin: 0, end: -15).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOutSine),
-    );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _animation,
-      builder: (context, child) {
-        return Transform.translate(
-          offset: Offset(0, _animation.value),
-          child: child,
-        );
-      },
-      child: widget.child,
     );
   }
 }
