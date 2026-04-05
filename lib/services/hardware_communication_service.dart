@@ -24,9 +24,9 @@ class HardwareCommunicationService {
   void startScanning() {
     _scanStream?.cancel();
     _scanStream = _ble.scanForDevices(withServices: []).listen((device) {
-      // Look for the Arduino Pico or other relevant devices
+      // Look for the Raspberry Pi 5 or other relevant devices
       final name = device.name.toLowerCase();
-      if (name.contains("pico") || name.contains("arduino") || name.contains("car_v1")) {
+      if (name.contains("rpi") || name.contains("raspberry") || name.contains("car_v1")) {
         debugPrint('Vehicle Found: ${device.name} (${device.id})');
         _deviceId = device.id;
         _connect(device.id);
@@ -44,12 +44,12 @@ class HardwareCommunicationService {
       if (update.connectionState == DeviceConnectionState.connected) {
         _statusController.add(VehicleStatus.idle);
         
-        // Subscribe to notifications from the Pico
+        // Subscribe to notifications from the Raspberry Pi
         _dataSubscription?.cancel();
         _dataSubscription = _ble.subscribeToCharacteristic(_commandCharacteristic).listen(
           (data) {
             final received = String.fromCharCodes(data).trim();
-            debugPrint('Received from Pico: $received');
+            debugPrint('Received from RPi: $received');
             _dataController.add(received);
           },
           onError: (e) => debugPrint('BLE Subscription Error: $e'),

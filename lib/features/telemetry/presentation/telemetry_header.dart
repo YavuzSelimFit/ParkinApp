@@ -77,7 +77,7 @@ class StatusIndicator extends ConsumerWidget {
             ref.read(hardwareServiceProvider).startScanning();
             if (context.mounted) {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('PICO TARANIYOR...')),
+                const SnackBar(content: Text('RPI TARANIYOR...')),
               );
             }
           }

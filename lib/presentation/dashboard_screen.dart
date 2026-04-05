@@ -153,6 +153,18 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                   onClear: () {
                     ref.read(parkingSlotsProvider.notifier).clearSlot(index);
                   },
+                  onPark: () {
+                    final slot = slots[index];
+                    if (slot.qrValue != null) {
+                      final targetSpace = ParkingSpace(
+                        id: slot.qrValue!,
+                        label: slot.label,
+                        qrValue: slot.qrValue!,
+                        coordinates: [0, 0],
+                      );
+                      _sendLocation(targetSpace);
+                    }
+                  },
                 );
               },
             ),
@@ -211,6 +223,7 @@ class CleanParkingSlotCard extends StatelessWidget {
   final int index;
   final VoidCallback onTap;
   final VoidCallback onClear;
+  final VoidCallback onPark;
 
   const CleanParkingSlotCard({
     super.key,
@@ -218,6 +231,7 @@ class CleanParkingSlotCard extends StatelessWidget {
     required this.index,
     required this.onTap,
     required this.onClear,
+    required this.onPark,
   });
 
   @override
@@ -325,6 +339,42 @@ class CleanParkingSlotCard extends StatelessWidget {
                       Icons.close,
                       size: 14,
                       color: Colors.grey.shade600,
+                    ),
+                  ),
+                ),
+              ),
+              
+            // PARK ET Button (Only if ArUco assigned but not parked)
+            if (hasQrAssigned && !isOccupied)
+              Positioned(
+                bottom: 12,
+                left: 12,
+                right: 12,
+                child: GestureDetector(
+                  onTap: onPark,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF34C759), // Green
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color(0xFF34C759).withValues(alpha: 0.3),
+                          blurRadius: 8,
+                          offset: const Offset(0, 4),
+                        )
+                      ],
+                    ),
+                    child: Center(
+                      child: Text(
+                        'PARK ET',
+                        style: GoogleFonts.spaceGrotesk(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.white,
+                          letterSpacing: 1,
+                        ),
+                      ),
                     ),
                   ),
                 ),
