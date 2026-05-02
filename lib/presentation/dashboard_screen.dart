@@ -2,6 +2,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../features/navigation/presentation/rc_joystick_panel.dart';
 import '../features/telemetry/presentation/telemetry_header.dart';
 import '../features/scanner/presentation/aruco_scanner_view.dart';
 import '../features/navigation/application/navigation_providers.dart';
@@ -78,6 +79,23 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                   ),
                   child: Row(
                     children: [
+                      Expanded(
+                        child: _NavButtonV2(
+                          label: 'DRIVE',
+                          icon: Icons.gamepad,
+                          color: const Color(0xFF34C759), // Green
+                          textColor: Colors.white,
+                          onPressed: () {
+                            showModalBottomSheet(
+                              context: context,
+                              backgroundColor: Colors.transparent,
+                              isScrollControlled: true,
+                              builder: (context) => const AnalogJoystickPanel(),
+                            );
+                          },
+                        ),
+                      ),
+                      const SizedBox(width: 8),
                       Expanded(
                         child: _NavButtonV2(
                           label: 'SUMMON',

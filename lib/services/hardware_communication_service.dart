@@ -88,12 +88,30 @@ class HardwareCommunicationService {
     deviceId: _deviceId!,
   );
 
+  Future<void> sendRcCommand(String command) async {
+    if (_deviceId == null) return;
+    try {
+      final data = command.codeUnits;
+      await _ble.writeCharacteristicWithoutResponse(
+        _commandCharacteristic,
+        value: data,
+      );
+    } catch (e) {
+      debugPrint('RC Command Send Error: $e');
+    }
+  }
+
   Future<void> sendEmergencyStop() async {
     if (_deviceId == null) return;
-    await _ble.writeCharacteristicWithoutResponse(
-      _commandCharacteristic,
-      value: [0xFF], // Special halt byte, distinct from QR strings
-    );
+    try {
+      final data = "STOP".codeUnits;
+      await _ble.writeCharacteristicWithoutResponse(
+        _commandCharacteristic,
+        value: data,
+      );
+    } catch (e) {
+      debugPrint('Stop Command Error: $e');
+    }
   }
 
   void dispose() {
