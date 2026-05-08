@@ -1,5 +1,0 @@
-﻿Analyzing intelligent_parking_app...                            
-
-   info - The constant name 'tertiary_container' isn't a lowerCamelCase identifier - lib\core\theme\app_theme.dart:11:22 - constant_identifier_names
-warning - A value for optional parameter 'key' isn't ever given - lib\features\telemetry\presentation\telemetry_header.dart:117:34 - unused_element_parameter
-
