@@ -1,7 +1,6 @@
 from machine import Pin, UART
 import struct
 import time
-import _thread
 from mcu import move, stop, stream
 from sensors import get_distances
 
@@ -22,8 +21,8 @@ MSG_DONE        = 0x0B   # Hareket tamamlandı (pi/uart.py send_move/send_path b
 MSG_STREAM      = 0x0C   # Non-blocking RC/otonom streaming komutu
 
 # --- UART SETUP (GPIO UART — orijinal bağlantı) ---
-uart      = UART(0, baudrate=115200, tx=Pin(0), rx=Pin(1))
-uart_lock = _thread.allocate_lock()     # iki core arasında çakışmayı önler
+# Artık tek çekirdek kullanıyoruz, lock'a gerek yok.
+uart = UART(0, baudrate=115200, tx=Pin(0), rx=Pin(1))
 
 # --- OBSTACLE DETECTION THRESHOLDS ---
 OBSTACLE_THRESHOLDS_CM = {
@@ -66,11 +65,9 @@ def _build_packet(msg_type: int, payload: bytes = b'') -> bytes:
 
 
 def _send(msg_type: int, payload: bytes = b''):
-    """Send a packet over UART — protected by lock for cross-core safety."""
+    """Send a packet over UART (single-core, no lock needed)."""
     packet = _build_packet(msg_type, payload)
-    uart_lock.acquire()
     uart.write(packet)
-    uart_lock.release()
 
 
 def _send_ack():
@@ -153,6 +150,18 @@ def _handle_stream(payload: bytes):
     if len(payload) != 12:
         return
     x, z, speed = struct.unpack('fff', payload)
+
+    # --- YENİ EKLENEN: DONANIMSAL ACİL FREN ---
+    # Araç ileri gitmeye çalışıyorsa ve hızı 0'dan büyükse donanım sensörünü direkt kontrol et
+    if z > 0 and speed > 0:
+        d = get_distances()
+        front_dist = d.get("front")
+        # Önünde 15 cm'den yakın engel varsa, Pi'den gelen komutu ezip hızı donanımsal olarak sıfırla
+        if front_dist is not None and front_dist < 15.0:
+            speed = 0.0
+            z = 0.0
+            print("[UART] HARDWARE AUTO-BRAKE TRIGGERED!")
+
     _last_stream_ms = time.ticks_ms()
     _stream_started = True
     stream(x, z, speed)
@@ -218,23 +227,41 @@ def run():
     print("[UART] Pico UART listener started.")
     buffer = b''
 
+    # Sensör gönderim zamanlayıcısı (eski Core 1'in yaptığı iş)
+    SENSOR_SEND_INTERVAL_MS = 200
+    last_sensor_send = time.ticks_ms()
+
     while True:
+        now = time.ticks_ms()
+
+        # --- SENSÖR VERİSİ GÖNDERİMİ ---
+        # Eskiden Core 1'de yapılıyordu — artık tek döngüde, çakışma yok.
+        if time.ticks_diff(now, last_sensor_send) >= SENSOR_SEND_INTERVAL_MS:
+            send_sensor_data()
+            last_sensor_send = now
+
         # --- WATCHDOG ---
         # Streaming modundayken 500ms veri gelmezse motorları durdur.
         if _stream_started:
-            if time.ticks_diff(time.ticks_ms(), _last_stream_ms) > _STREAM_WATCHDOG_MS:
+            if time.ticks_diff(now, _last_stream_ms) > _STREAM_WATCHDOG_MS:
                 stop()
                 _stream_started = False
 
-        # --- VERİ OKU ---
+        # --- VERİ OKU VE İŞLE ---
         if uart.any():
-            buffer += uart.read(uart.any())
+            data = uart.read()
+            if data:  # Veri gerçekten geldiyse buffer'a ekle
+                buffer += data
 
             # --- PAKET İŞLE ---
             while True:
                 idx = buffer.find(MSG_MARKER)
                 if idx == -1:
-                    buffer = b''
+                    # EĞER paketin yarısı geldiyse (Sadece 0xAA varsa) silme, sakla!
+                    if buffer.endswith(b'\xAA'):
+                        buffer = b'\xAA'
+                    else:
+                        buffer = b''
                     break
 
                 buffer = buffer[idx:]
@@ -266,6 +293,7 @@ def run():
                 else:
                     _send_nack()
 
+        # Döngüyü çok az uyutarak CPU'yu rahatlat
         time.sleep_ms(5)
 
 

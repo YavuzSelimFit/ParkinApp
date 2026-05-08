@@ -164,6 +164,14 @@ def stream(x, z, speed):
     base_pwm     = int(max(0.0, min(1.0, speed)) * 255)
     steering_deg = _calc_steering(x, abs(z))
 
+    # YENİ EKLENEN KISIM: Global enkoderleri içeri al
+    global left_pulses, right_pulses
+
+    # Eğer dönüyorsak enkoderleri SIFIRLA ki hafızada hata birikmesin
+    if abs(steering_deg) >= 0.5:
+        left_pulses = 0
+        right_pulses = 0
+
     # Servo pozisyonu — geri gidişte direksiyon yönü aynı
     servo_angle = 90 + SERVO_OFFSET + steering_deg
     servo_angle = max(SERVO_MIN, min(SERVO_MAX, servo_angle))
@@ -171,7 +179,7 @@ def stream(x, z, speed):
 
     left_pwm, right_pwm = _ackermann_pwm(base_pwm, steering_deg)
 
-    # Encoder sync (düz sürüşte)
+    # Encoder sync (sadece düz sürüşte ve hafıza temizken)
     if abs(steering_deg) < 0.5:
         error      = abs(left_pulses) - abs(right_pulses)
         correction = int(error * SYNC_GAIN)
@@ -234,10 +242,22 @@ def move(x, z, speed, obstacle_check=None):
     left_pulses  = 0
     right_pulses = 0
 
+    # --- Zaman Aşımı (Timeout) Hesaplama ---
+    start_ticks = time.ticks_ms()
+    # Gidilecek mesafeye göre maksimum bekleme süresi (Minimum 3 saniye)
+    timeout_ms = max(3000, int((target_cm / 5.0) * 1000))
+
     # --- Drive loop ---
     while True:
         abs_left  = abs(left_pulses)
         abs_right = abs(right_pulses)
+
+        # 1. GÜVENLİK: Tekerlekler takıldıysa sonsuza kadar bekleme, çık!
+        if time.ticks_diff(time.ticks_ms(), start_ticks) > timeout_ms:
+            print("[MCU] Hareket zaman asimi! Tekerlekler sikisti.")
+            _stop()
+            _set_servo(90 + SERVO_OFFSET)
+            return None
 
         # --- Obstacle check ---
         if obstacle_check is not None:

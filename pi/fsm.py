@@ -41,7 +41,7 @@ SEARCH_FRAME_LIMIT = 4000
 # Dynamic Obstacle Detection
 EMERGENCY_BRAKE_CENTER_M  = 0.18 # Sadece ana ön sensör tam bypass tetikler
 DYNAMIC_OBSTACLE_MARGIN_M = 0.20 # ArUco ile engel ayrımı (Geometrik tolerans)
-ZONE_LOCK_DIST_M          = 0.65 # Park alanına giriş kilit mesafesi
+ZONE_LOCK_DIST_M          = 0.30 # Sadece son 30 cm'de engelleri yoksay (Eskisi 0.65 idi)
 
 # Nudge (Hafif Sıyrılma) Ayarları
 CORNER_NUDGE_DIST_M       = 0.20 # Yan sensör tehlike mesafesi
