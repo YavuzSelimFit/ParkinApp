@@ -227,7 +227,7 @@ class UARTController:
     def send_path(self, segments) -> bool:
         """
         Send a full path (list of Segments) to the Pico sequentially.
-        Waits for each segment to complete (DONE) before sending the next.
+        Waits for each segment to complete (ACK) before sending the next.
         If the Pico reports an obstacle (MSG_OBSTACLE), stops and stores
         the event so receive() can return it.
 
@@ -255,6 +255,7 @@ class UARTController:
             resp_type, resp_payload = self._read_packet(deadline)
 
             if resp_type == MSG_DONE:
+                # Segment completed — send next
                 continue
 
             elif resp_type == MSG_OBSTACLE:
@@ -376,7 +377,7 @@ class UARTController:
         self.ser.reset_input_buffer()
         self._send(MSG_POSE, payload)
 
-        # Phase 1 — wait for ACK
+        # Phase 1 — wait for ACK (transmission confirmed), discard everything else
         deadline = time.time() + TIMEOUT
         while time.time() < deadline:
             resp_type, _ = self._read_packet(deadline)
@@ -386,7 +387,7 @@ class UARTController:
             print(f"[UART] send_move: no ACK within timeout")
             return False
 
-        # Phase 2 — wait for DONE or OBSTACLE
+        # Phase 2 — wait for DONE or OBSTACLE (move complete), discard everything else
         deadline = time.time() + MOVE_TIMEOUT
         while time.time() < deadline:
             resp_type, resp_payload = self._read_packet(deadline)

@@ -96,102 +96,13 @@ def _stop():
     pwm_right.duty_u16(0)
 
 
-# --- INTERNAL: STEERING CALCULATION ---
-def _calc_steering(x, z_abs):
-    """
-    Hesaplar ve uygulanabilir aralığa kırpar.
-    x     : yanal sapma (-1.0..1.0)
-    z_abs : normalleştirilmiş ileri mesafe (her zaman pozitif)
-    Döner : steering_deg (kırpılmış)
-    """
-    if z_abs < 1e-4:
-        z_abs = 1e-4  # sıfıra bölmeyi önle
-    steering_deg = math.degrees(math.atan2(x, z_abs)) * STEERING_GAIN
-    max_s = SERVO_MAX - 90 - SERVO_OFFSET
-    min_s = SERVO_MIN - 90 - SERVO_OFFSET
-    return max(min_s, min(max_s, steering_deg))
-
-
-def _ackermann_pwm(base_pwm, steering_deg):
-    """
-    Ackermann diferansiyeli için iç/dış tekerlek PWM'ini hesaplar.
-    Döner: (left_pwm, right_pwm) — unsigned (0..255 arası).
-    İşaret bilgisi _drive() tarafından yönetilir.
-    """
-    if abs(steering_deg) < 0.5:
-        # Düz — encoder sync uygula
-        return base_pwm, base_pwm
-
-    angle_rad   = math.radians(abs(steering_deg))
-    R           = WHEELBASE / math.tan(angle_rad)
-    ratio_inner = (R - TRACK_WIDTH / 2) / R
-    ratio_outer = (R + TRACK_WIDTH / 2) / R
-
-    if steering_deg > 0:   # sağa dön: sağ tekerlek iç
-        return int(base_pwm * ratio_outer), int(base_pwm * ratio_inner)
-    else:                  # sola dön: sol tekerlek iç
-        return int(base_pwm * ratio_inner), int(base_pwm * ratio_outer)
-
-
 # --- PUBLIC: STOP ---
 def stop():
     """Immediately stop both motors."""
     _stop()
-    _set_servo(90 + SERVO_OFFSET)
 
 
-# --- PUBLIC: STREAM (non-blocking, RC ve otonom streaming için) ---
-def stream(x, z, speed):
-    """
-    Sürekli akış modunda motoru ve servoyu ayarlar.  BLOKLAMA YAPMAZ.
-
-    Pi her kamera karesinde (otonom mod) veya joystick güncellemesinde (RC mod)
-    bu komutu gönderir. Pico aldığında hemen uygular ve geri döner.
-
-    Parametreler
-    ------------
-    x     : float  Yanal sapma −1.0..+1.0   (+ = sağ, − = sol)
-    z     : float  İleri/geri yön −1.0..+1.0 (+ = ileri, − = geri)
-    speed : float  Normalize hız 0.0..1.0
-
-    z = 0 veya speed = 0 ise motorlar durdurulur, servo merkeze gelir.
-    """
-    if speed <= 0.0 or (abs(x) < 0.01 and abs(z) < 0.01):
-        _stop()
-        _set_servo(90 + SERVO_OFFSET)
-        return
-
-    base_pwm     = int(max(0.0, min(1.0, speed)) * 255)
-    steering_deg = _calc_steering(x, abs(z))
-
-    # YENİ EKLENEN KISIM: Global enkoderleri içeri al
-    global left_pulses, right_pulses
-
-    # Eğer dönüyorsak enkoderleri SIFIRLA ki hafızada hata birikmesin
-    if abs(steering_deg) >= 0.5:
-        left_pulses = 0
-        right_pulses = 0
-
-    # Servo pozisyonu — geri gidişte direksiyon yönü aynı
-    servo_angle = 90 + SERVO_OFFSET + steering_deg
-    servo_angle = max(SERVO_MIN, min(SERVO_MAX, servo_angle))
-    _set_servo(servo_angle)
-
-    left_pwm, right_pwm = _ackermann_pwm(base_pwm, steering_deg)
-
-    # Encoder sync (sadece düz sürüşte ve hafıza temizken)
-    if abs(steering_deg) < 0.5:
-        error      = abs(left_pulses) - abs(right_pulses)
-        correction = int(error * SYNC_GAIN)
-        left_pwm   = max(0, min(255, left_pwm  - correction))
-        right_pwm  = max(0, min(255, right_pwm + correction))
-
-    # Yön: z işareti ileri/geri belirler
-    direction = 1 if z >= 0 else -1
-    _drive(left_pwm * direction, right_pwm * direction)
-
-
-# --- PUBLIC: MOVE (blocking, enkoder tabanlı, belirli mesafe için) ---
+# --- PUBLIC: MOVE ---
 def move(x, z, speed, obstacle_check=None):
     """
     Drive the vehicle toward the target point (x, z).
@@ -199,8 +110,7 @@ def move(x, z, speed, obstacle_check=None):
     Parameters
     ----------
     x              : float  Lateral offset in metres  (+ = right, – = left)
-    z              : float  Forward/reverse distance in metres
-                            Positive = forward, Negative = reverse.
+    z              : float  Forward distance in metres (must be > 0)
     speed          : float  Normalised speed 0.0–1.0
     obstacle_check : callable or None
         Called every loop iteration with (completed_cm: float).
@@ -214,26 +124,26 @@ def move(x, z, speed, obstacle_check=None):
     """
     global left_pulses, right_pulses
 
-    if z == 0:
-        return None                          # refuse zero target
+    if z <= 0:
+        return None                          # refuse reverse / zero targets
 
-    # Direction: +1 = forward, -1 = reverse
-    direction = 1 if z > 0 else -1
-    z_abs     = abs(z)
+    # --- Derived quantities ---
+    steering_deg = math.degrees(math.atan2(x, z)) * STEERING_GAIN
 
-    steering_deg  = _calc_steering(x, z_abs)
+    # Clamp steering to physically achievable range
+    max_steering  = SERVO_MAX - 90 - SERVO_OFFSET
+    min_steering  = SERVO_MIN - 90 - SERVO_OFFSET
+    steering_deg  = max(min_steering, min(max_steering, steering_deg))
 
-    # Target distance (always positive)
-    target_cm     = z_abs * 100.0
+    # Target distance
+    target_cm     = z * 100.0
     target_pulses = int(target_cm * PULSES_PER_CM)
 
     # Base PWM (0–255)
     base_pwm = int(max(0.0, min(1.0, speed)) * 255)
 
     # --- Servo ---
-    # Geri vites sırasında servo yönü tersine çevrilir
-    effective_steering = steering_deg * direction
-    servo_angle = 90 + SERVO_OFFSET + effective_steering
+    servo_angle = 90 + SERVO_OFFSET + steering_deg
     servo_angle = max(SERVO_MIN, min(SERVO_MAX, servo_angle))
     _set_servo(servo_angle)
     time.sleep(0.4)                          # allow servo to reach position
@@ -242,22 +152,10 @@ def move(x, z, speed, obstacle_check=None):
     left_pulses  = 0
     right_pulses = 0
 
-    # --- Zaman Aşımı (Timeout) Hesaplama ---
-    start_ticks = time.ticks_ms()
-    # Gidilecek mesafeye göre maksimum bekleme süresi (Minimum 3 saniye)
-    timeout_ms = max(3000, int((target_cm / 5.0) * 1000))
-
     # --- Drive loop ---
     while True:
         abs_left  = abs(left_pulses)
         abs_right = abs(right_pulses)
-
-        # 1. GÜVENLİK: Tekerlekler takıldıysa sonsuza kadar bekleme, çık!
-        if time.ticks_diff(time.ticks_ms(), start_ticks) > timeout_ms:
-            print("[MCU] Hareket zaman asimi! Tekerlekler sikisti.")
-            _stop()
-            _set_servo(90 + SERVO_OFFSET)
-            return None
 
         # --- Obstacle check ---
         if obstacle_check is not None:
@@ -269,17 +167,30 @@ def move(x, z, speed, obstacle_check=None):
                 _set_servo(90 + SERVO_OFFSET)
                 return obs                   # (sensor_id, range_mm, completed_mm)
 
-        left_pwm, right_pwm = _ackermann_pwm(base_pwm, steering_deg)
+        if steering_deg == 0:
+            # Straight: sync both wheels with encoder feedback
+            error        = abs_left - abs_right
+            correction   = int(error * SYNC_GAIN)
+            left_pwm     = max(0, min(255, base_pwm - correction))
+            right_pwm    = max(0, min(255, base_pwm + correction))
+            _drive(left_pwm, right_pwm)
 
-        if abs(steering_deg) < 0.5:
-            # Düz: encoder sync
-            error      = abs_left - abs_right
-            correction = int(error * SYNC_GAIN)
-            left_pwm   = max(0, min(255, left_pwm  - correction))
-            right_pwm  = max(0, min(255, right_pwm + correction))
+        else:
+            # Turn: Ackermann differential
+            angle_rad   = math.radians(abs(steering_deg))
+            R           = WHEELBASE / math.tan(angle_rad)
 
-        # direction ile çarp: geri viteste motorlar ters döner
-        _drive(left_pwm * direction, right_pwm * direction)
+            ratio_inner = (R - TRACK_WIDTH / 2) / R
+            ratio_outer = (R + TRACK_WIDTH / 2) / R
+
+            if steering_deg > 0:            # right turn: right wheel is inner
+                right_pwm = int(base_pwm * ratio_inner)
+                left_pwm  = int(base_pwm * ratio_outer)
+            else:                           # left turn: left wheel is inner
+                left_pwm  = int(base_pwm * ratio_inner)
+                right_pwm = int(base_pwm * ratio_outer)
+
+            _drive(left_pwm, right_pwm)
 
         # Exit when average pulse count reaches target
         if (abs_left + abs_right) / 2 >= target_pulses:

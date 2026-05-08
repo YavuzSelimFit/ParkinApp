@@ -1,224 +1,147 @@
-# pi/main.py — BLE entegreli otonom ve RC sürüş kontrol merkezi
+# pi/main.py — Entry point for the autonomous summoning vehicle.
 #
-# OTONOM MOD:
-#   Flutter uygulaması "PARK:2" formatında bir mesaj gönderir.
-#   → FSM hedef ArUco ID'sini 2 olarak ayarlar ve SEARCHING durumuna geçer.
-#   → Araç markeri bulur, parkeder ve "STATUS:ARRIVED" bilgisini BLE ile geri gönderir.
+# Initialises all components and waits for a "PARK:<id>" command
+# from the mobile app over Bluetooth before starting the FSM.
 #
-# RC (UZAKTAN KUMANDA) MODu:
-#   Flutter joystick'i "RC:X:Y" formatında sürekli mesaj gönderir.
-#   X ve Y, -100 ile +100 arasında normalize edilmiş joystick değerleridir.
-#   → FSM IDLE'a alınır (otonom sürüş iptal edilir).
-#   → X/100.0 ve Y/100.0 değerleri uart.send_stream() ile Pico'ya aktarılır.
-#   → Kullanıcı joystick'i bırakınca (RC:0:0) araç durur.
+# Keys (always active):
+#   m — toggle manual / auto mode
+#   q — quit
 #
-# ACİL DURDURMA:
-#   Flutter "STOP" mesajı gönderir.
-#   → FSM IDLE'a alınır, motorlar durdurulur.
+# Keys (manual mode only):
+#   i — force IDLE
+#   s — force SEARCHING
+#   a — force APPROACHING
+#   r — force ARRIVED
 #
-# BLE Protokol Özeti (Flutter ↔ Pi):
-#   Uygulama → Pi : "PARK:<id>"   Otonom park başlat (örn: "PARK:2")
-#   Uygulama → Pi : "RC:<x>:<y>"  Joystick komutu   (örn: "RC:50:-30")
-#   Uygulama → Pi : "STOP"        Acil durdur
-#   Pi → Uygulama : "STATUS:ARRIVED"   Park tamamlandı bildirimi
-#
-# Bağımlılıklar (Raspberry Pi):
-#   pip install bless
+# Press Ctrl+C to stop cleanly.
 
 import sys
-import time
+import tty
+import termios
+import select
 import traceback
-import math
 
 from aruco import ArucoDetector
-from uart  import UARTController
-from fsm   import FSM, IDLE, SEARCHING, APPROACHING, BYPASSING, ARRIVED
+from uart import UARTController
+from fsm import FSM, IDLE, SEARCHING, APPROACHING, BYPASSING, ARRIVED
 from ble_server import BLEServer
 
 # ---------------------------------------------------------------------------
 # Config
 # ---------------------------------------------------------------------------
 
-UART_PORT  = '/dev/ttyAMA0'
-UART_BAUD  = 115200
-
-# RC mod sabit hızı (0.0 – 1.0 arası).
-# Joystick'in ne kadar itildiğine göre oranlanır.
-RC_MAX_SPEED = 0.40
-
-# RC deadzone — bu değerin altındaki joystick girdileri yok sayılır.
-RC_DEADZONE  = 10   # (−100..100 skalasında)
+UART_PORT = '/dev/ttyAMA0'
+UART_BAUD = 115200
 
 # ---------------------------------------------------------------------------
-# RC komut işleyici
+# Terminal helpers
 # ---------------------------------------------------------------------------
 
-def _parse_rc(cmd: str):
-    """
-    "RC:X:Y" formatındaki string'i parse eder.
-    Döner: (uart_x, uart_z, speed) veya None (geçersiz format).
+def _setup_terminal():
+    fd = sys.stdin.fileno()
+    old = termios.tcgetattr(fd)
+    tty.setcbreak(fd)           # immediate input, Ctrl+C still works
+    return old
 
-    Joystick eksenleri:
-        X  (−100..100): negatif = sola,  pozitif = sağa
-        Y  (−100..100): negatif = geri,  pozitif = ileri
+def _restore_terminal(old):
+    termios.tcsetattr(sys.stdin.fileno(), termios.TCSADRAIN, old)
 
-    UART send_stream parametreleri:
-        x     (−1.0..1.0): yanal sapma (sağ pozitif)
-        z     (−1.0..1.0): ileri/geri  (ileri pozitif)
-        speed (0.0..1.0 ): normalize hız
-
-    Hız hesabı:
-        Joystick'in ne kadar itildiğini (magnitude) kullan,
-        ama yönü x/z bileşenlerinde tut.
-        Bu sayede tam itişte RC_MAX_SPEED, hafif itişte daha yavaş gider.
-    """
-    parts = cmd.split(":")
-    if len(parts) != 3:
-        return None
-    try:
-        jx = float(parts[1])   # sağ pozitif
-        jy = float(parts[2])   # ileri pozitif
-    except ValueError:
-        return None
-
-    # Deadzone uygula
-    if abs(jx) < RC_DEADZONE:
-        jx = 0.0
-    if abs(jy) < RC_DEADZONE:
-        jy = 0.0
-
-    if jx == 0.0 and jy == 0.0:
-        return (0.0, 0.0, 0.0)   # dur komutu
-
-    # -100..100 → -1.0..1.0 normalize et
-    nx = max(-1.0, min(1.0, jx / 100.0))
-    ny = max(-1.0, min(1.0, jy / 100.0))
-
-    # Joystick'in toplam itiş büyüklüğünü hız olarak kullan.
-    magnitude = math.sqrt(nx * nx + ny * ny) / math.sqrt(2)  # normalise to 0-1
-    speed = max(0.0, min(1.0, magnitude * RC_MAX_SPEED))
-
-    # Yön bileşenlerini normalize et (birim vektör × hız yerine saf yön).
-    # send_stream x ve z'yi yön olarak kullanır; hız ayrı parametre.
-    return (nx, ny, speed)
-
+def _read_key():
+    """Return pressed key or None if nothing waiting."""
+    if select.select([sys.stdin], [], [], 0)[0]:
+        return sys.stdin.read(1)
+    return None
 
 # ---------------------------------------------------------------------------
 # Setup
 # ---------------------------------------------------------------------------
 
-print("[MAIN] Başlatılıyor...")
-
+print("Initialising...")
 detector = ArucoDetector()
 uart     = UARTController(port=UART_PORT, baud=UART_BAUD)
 
-print("[MAIN] Pico bağlantısı kontrol ediliyor...")
+print("Checking Pico connection...")
 if not uart.heartbeat():
-    print("[MAIN] HATA: Pico'dan heartbeat yok — bağlantıyı kontrol edin.")
+    print("[ERROR] No heartbeat from Pico — check wiring.")
     detector.stop()
-    sys.exit(1)
-print("[MAIN] Pico hazır.\n")
+    exit()
 
-# BLE sunucusu
-ble = BLEServer(device_name="ParkingCar_V1")
+print("Pico alive.\n")
+
+fsm = FSM(detector, uart)
+# FSM starts in IDLE — it will wait for BLE command before moving.
+
+# ---------------------------------------------------------------------------
+# BLE callbacks
+# ---------------------------------------------------------------------------
+
+def _on_park_command(target_id: int):
+    """Called from BLE thread when mobile app sends PARK:<id>."""
+    print(f"\n[MAIN] BLE → park command received: target_id={target_id}")
+    if fsm.state() != IDLE:
+        print("[MAIN] FSM busy — stopping current run before starting new one.")
+        fsm.stop()
+    fsm.set_target(target_id)
+    fsm.start()
+    print(f"[MAIN] FSM started → target marker {target_id}")
+
+def _on_stop_command():
+    """Called from BLE thread when mobile app sends STOP."""
+    print("\n[MAIN] BLE → emergency stop received.")
+    fsm.stop()
+
+# ---------------------------------------------------------------------------
+# Start BLE server (non-blocking background thread)
+# ---------------------------------------------------------------------------
+
+ble = BLEServer(on_park_command=_on_park_command, on_stop_command=_on_stop_command)
 ble.start()
 
-# FSM — park tamamlanınca BLE'ye bildir
-def _on_arrived():
-    print("[MAIN] Park tamamlandı — uygulama bilgilendiriliyor.")
-    ble.send_notification("STATUS:ARRIVED")
-
-fsm = FSM(detector, uart, on_arrived_callback=_on_arrived)
-
 # ---------------------------------------------------------------------------
-# Mod takibi
+# Run
 # ---------------------------------------------------------------------------
 
-RC_MODE   = "RC"
-AUTO_MODE = "AUTO"
-current_mode = AUTO_MODE   # Başlangıçta otonom mod (IDLE'da bekler)
+manual_mode = False
 
-print("[MAIN] BLE üzerinden komut bekleniyor...")
-print("       PARK:<id>    → Otonom park başlat")
-print("       RC:<x>:<y>   → RC modu (joystick)")
-print("       STOP         → Acil durdur\n")
+print("Waiting for PARK command from mobile app over Bluetooth…")
+print("Keys: [m] toggle manual/auto  [i] IDLE  [s] SEARCHING  "
+      "[a] APPROACHING  [r] ARRIVED  [q] quit\n")
 
-# ---------------------------------------------------------------------------
-# Ana döngü
-# ---------------------------------------------------------------------------
+old_term = _setup_terminal()
 
 try:
     while True:
-        # ── BLE kuyruğunu kontrol et ────────────────────────────────────────
-        cmd = ble.get_command()
+        key = _read_key()
 
-        if cmd is not None:
-            cmd_upper = cmd.strip().upper()
+        if key == 'm':
+            manual_mode = not manual_mode
+            print(f"\n[MAIN] Mode: {'MANUAL' if manual_mode else 'AUTO'}")
 
-            # --- Acil Durdurma ---
-            if cmd_upper == "STOP":
-                print("[MAIN] STOP komutu alındı.")
-                current_mode = AUTO_MODE
-                fsm.force_state(IDLE)   # send_stop() zaten _on_enter(IDLE) içinde çağrılıyor
+        elif key == 'q':
+            break
 
-            # --- RC Modu (joystick) ---
-            elif cmd_upper.startswith("RC:"):
-                if current_mode != RC_MODE:
-                    print("[MAIN] RC moduna geçildi — otonom sürüş duraklatıldı.")
-                    current_mode = RC_MODE
-                    fsm.force_state(IDLE)   # FSM'i dondur, motorları durdur
+        elif manual_mode:
+            if key == 'i':
+                fsm.force_state(IDLE)
+            elif key == 's':
+                fsm.force_state(SEARCHING)
+            elif key == 'a':
+                fsm.force_state(APPROACHING)
+            elif key == 'r':
+                fsm.force_state(ARRIVED)
 
-                parsed = _parse_rc(cmd_upper)
-                if parsed is not None:
-                    ux, uz, spd = parsed
-                    if spd == 0.0:
-                        uart.send_stop()
-                    else:
-                        uart.send_stream(ux, uz, spd)
-
-            # --- Otonom Park Komutu ---
-            elif cmd_upper.strip().isdigit():
-                target_id = int(cmd_upper.strip())
-                print(f"[MAIN] Otonom park komutu: ArUco ID={target_id}")
-                current_mode = AUTO_MODE
-                fsm.force_state(IDLE)   # Temiz başlangıç
-                fsm.set_target(target_id)
-                fsm.start()             # IDLE → SEARCHING
-
-            elif cmd_upper.startswith("PARK:"):
-                parts = cmd_upper.split(":")
-                if len(parts) == 2 and parts[1].isdigit():
-                    target_id = int(parts[1])
-                    print(f"[MAIN] Otonom park komutu: ArUco ID={target_id}")
-                    current_mode = AUTO_MODE
-                    fsm.force_state(IDLE)   # Temiz başlangıç
-                    fsm.set_target(target_id)
-                    fsm.start()             # IDLE → SEARCHING
-                else:
-                    print(f"[MAIN] Geçersiz PARK komutu: '{cmd}'")
-
-            else:
-                print(f"[MAIN] Bilinmeyen komut: '{cmd}'")
-
-        # ── FSM tick (sadece otonom modda) ─────────────────────────────────
-        if current_mode == AUTO_MODE:
-            try:
-                fsm.tick()
-            except Exception as e:
-                print(f"[MAIN] FSM tick hatası — {e}")
-                traceback.print_exc()
-
-        # ── Döngü hızı ─────────────────────────────────────────────────────
-        # RC modunda çok sık komutu işleme gerek yok;
-        # FSM zaten her frame kamera okuyacak (doğal throttle).
-        time.sleep(0.01)
+        try:
+            fsm.tick()
+        except Exception as e:
+            print(f"\n[MAIN] tick error — {e}")
+            traceback.print_exc()
+            # Don't exit — keep the loop alive so ARRIVED state persists
 
 except KeyboardInterrupt:
-    print("\n[MAIN] Ctrl+C — durduruluyor.")
-
+    pass
 finally:
-    print("[MAIN] Temizleniyor...")
+    _restore_terminal(old_term)
+    print("\nStopping.")
+    ble.stop()
     fsm.stop()
     detector.stop()
-    ble.shutdown()
-    print("[MAIN] Çıkış.")

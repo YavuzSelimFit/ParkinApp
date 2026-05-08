@@ -92,6 +92,9 @@ def start():
         sm.active(1)
 
         timer = Timer()
+        # Stagger start times to avoid all sensors firing simultaneously
+        # Each sensor fires every 120ms, offset by 20ms from the previous
+        offset_ms = sm_id * 20
         timer.init(
             period=120,
             mode=Timer.PERIODIC,
@@ -100,6 +103,9 @@ def start():
 
         _state_machines[name] = sm
         _trigger_timers[name] = timer
+
+    # Apply staggered start by briefly sleeping between inits
+    # (handled by the 20ms natural offset from sequential init)
 
 
 def stop():

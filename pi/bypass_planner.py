@@ -11,7 +11,7 @@ CLEARANCE_TIME_SEC = 2.0
 TURN_OUT_STEER_X   = 0.50   
 RE_ACQUIRE_STEER_X = 0.35   
 
-# Acil Durum Geri Vites Sabitleri
+# YENİ: Acil Durum Geri Vites Sabitleri
 CRITICAL_FRONT_M   = 0.15   # Çarpmaya ramak kaldığını belirten eşik (15 cm)
 BACKOFF_TARGET_M   = 0.35   # Geri çıkarak açmak istediğimiz güvenli mesafe (35 cm)
 
@@ -19,7 +19,7 @@ _TURN_OUT    = "TURN_OUT"
 _WALL_FOLLOW = "WALL_FOLLOW"
 _CLEARANCE   = "CLEARANCE"
 _RE_ACQUIRE  = "RE_ACQUIRE"
-_BACKOFF     = "BACKOFF"
+_BACKOFF     = "BACKOFF"    # <-- YENİ DURUM
 
 class BypassPlanner:
     def __init__(self):
@@ -38,6 +38,7 @@ class BypassPlanner:
         # --- GLOBAL GÜVENLİK KONTROLÜ (Acil Geri Vites Tetikleyici) ---
         if sensors and self._state not in (_BACKOFF, _CLEARANCE): 
             front = sensors.get('front')
+            # Eğer ön tarafta aniden 15 cm'den daha yakın bir engel belirirse, her şeyi bırak ve geri çık!
             if front is not None and front < CRITICAL_FRONT_M:
                 print(f"[BYPASS] IMMINENT COLLISION ({front:.2f}m)! Triggering BACKOFF.")
                 self._state = _BACKOFF
@@ -131,12 +132,13 @@ class BypassPlanner:
             self._state = _TURN_OUT
             return ('stream', 0.0, 1.0, 0.0)
 
-        # Ön taraf yeterince açılana kadar geri git
+        # Ön taraf yeterince açılana kadar (örn 35 cm) geri git
         if front is None or front > BACKOFF_TARGET_M:
             print(f"[BYPASS] Backoff complete (Front clear). Resuming TURN_OUT.")
             self._state = _TURN_OUT
             return ('stream', 0.0, 1.0, 0.0)
             
-        # Burnun yönünü dışarı atmak için direksiyonu kaçış yönünün TERSİNE kırarak geri çık
+        # YENİ MANEVRA: Burnun yönünü dışarı atmak için direksiyonu kaçış yönünün TERSİNE kırarak geri çık.
+        # (Örn: Sağa kaçarken öne çarparsak, sola kırarak geri geliriz ki burun sağa açılsın)
         steer_cmd = -TURN_OUT_STEER_X * self.dir
-        return ('stream', steer_cmd, -1.0, BYPASS_SPEED)  # z = -1.0 ile geri vites
+        return ('stream', steer_cmd, -1.0, BYPASS_SPEED) # z = -1.0 ile geri vites

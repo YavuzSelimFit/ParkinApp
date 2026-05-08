@@ -11,12 +11,8 @@
 #   Rotate in a fixed direction (SEARCH_DIRECTION) until the target marker
 #   appears, then switch to APPROACHING.
 #
-# BLE entegrasyonu için değişiklikler:
-#   - __init__ artık opsiyonel on_arrived_callback alıyor.
-#   - ARRIVED durumuna girildiğinde bu callback tetikleniyor.
-#
 # Usage:
-#   fsm = FSM(detector, uart, on_arrived_callback=my_fn)
+#   fsm = FSM(detector, uart)
 #   fsm.start()
 #   while True:
 #       fsm.tick()
@@ -41,7 +37,7 @@ SEARCH_FRAME_LIMIT = 4000
 # Dynamic Obstacle Detection
 EMERGENCY_BRAKE_CENTER_M  = 0.18 # Sadece ana ön sensör tam bypass tetikler
 DYNAMIC_OBSTACLE_MARGIN_M = 0.20 # ArUco ile engel ayrımı (Geometrik tolerans)
-ZONE_LOCK_DIST_M          = 0.30 # Sadece son 30 cm'de engelleri yoksay (Eskisi 0.65 idi)
+ZONE_LOCK_DIST_M          = 0.65 # Park alanına giriş kilit mesafesi
 
 # Nudge (Hafif Sıyrılma) Ayarları
 CORNER_NUDGE_DIST_M       = 0.20 # Yan sensör tehlike mesafesi
@@ -65,7 +61,7 @@ ARRIVED     = "ARRIVED"
 
 class FSM:
 
-    def __init__(self, detector, uart, target_id=None, on_arrived_callback=None):
+    def __init__(self, detector, uart, target_id=None):
         self.detector = detector
         self.uart     = uart
         self.parking  = ParkingPlanner(detector, uart, target_id)
@@ -81,10 +77,6 @@ class FSM:
         self._lost_frames      = 0
         self._search_frames    = 0
         self._target_marker_id = target_id
-
-        # BLE entegrasyonu: Park tamamlandığında çağrılacak callback.
-        # Örn: lambda: ble_server.send_notification("STATUS:ARRIVED")
-        self.on_arrived_callback = on_arrived_callback
 
     # ------------------------------------------------------------------
     # Public API
@@ -192,6 +184,7 @@ class FSM:
                         trigger_bypass = True
 
                 if trigger_bypass:
+                    # HATA BURADAYDI, DÜZELTİLDİ: Var olan ön-yan sensörlere göre asimetri hesabı yapılıyor!
                     fl = sensors.get('front_left') or 9.9
                     fr = sensors.get('front_right') or 9.9
                     
@@ -315,16 +308,11 @@ class FSM:
         elif state == BYPASSING:
             self.bypass_planner.reset(direction=self._next_bypass_dir)
             self.uart.send_stop()  
+            import time
             time.sleep(0.2)
 
         elif state == ARRIVED:
             self.uart.send_stop()
-            # BLE entegrasyonu: Uygulamaya park bilgisini ilet.
-            if self.on_arrived_callback is not None:
-                try:
-                    self.on_arrived_callback()
-                except Exception as e:
-                    print(f"[FSM] on_arrived_callback error: {e}")
 
     # ------------------------------------------------------------------
     # Helpers

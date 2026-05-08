@@ -26,7 +26,7 @@ class HardwareCommunicationService {
     _scanStream = _ble.scanForDevices(withServices: []).listen((device) {
       // Look for the Raspberry Pi 5 or other relevant devices
       final name = device.name.toLowerCase();
-      if (name.contains("rpi") || name.contains("raspberry") || name.contains("car_v1")) {
+      if (name.contains("rpi") || name.contains("raspberry") || name.contains("car_v1") || name.contains("wattsnext")) {
         debugPrint('Vehicle Found: ${device.name} (${device.id})');
         _deviceId = device.id;
         _connect(device.id);
@@ -69,11 +69,16 @@ class HardwareCommunicationService {
 
   Future<void> sendParkCommand(ParkingSpace space) async {
     if (_deviceId == null) return;
-    final data = "PARK:${space.qrValue}".codeUnits;
-    await _ble.writeCharacteristicWithoutResponse(
-      _commandCharacteristic,
-      value: data,
-    );
+    try {
+      final data = "PARK:${space.qrValue}".codeUnits;
+      await _ble.writeCharacteristicWithoutResponse(
+        _commandCharacteristic,
+        value: data,
+      );
+      debugPrint('[BLE] Sent: PARK:${space.qrValue}');
+    } catch (e) {
+      debugPrint('Park Command Send Error: $e');
+    }
   }
 
   Future<void> sendSummonCommand(ParkingSpace homeSpace) async {
