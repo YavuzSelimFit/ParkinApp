@@ -5,6 +5,11 @@ import uart
 
 SENSOR_SEND_INTERVAL_MS = 200   # how often to send sensor data to Pi
 
+# --- BAŞLANGIÇ GECİKMESİ ---
+# Thonny / mpremote'un bağlanıp Ctrl+C gönderebilmesi için
+# boot sonrası 3 saniye bekliyoruz.
+time.sleep(3)
+
 def sensor_loop():
     """Runs on Core 1 — starts sensors and sends readings to Pi periodically."""
     sensors.start()

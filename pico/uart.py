@@ -147,6 +147,7 @@ def _handle_stream(payload: bytes):
     Non-blocking streaming komutu — RC ve otonom yaklaşma için.
     Pi her kamera karesinde gönderir, ACK beklemez.
     Payload: 3 × float32 = x (m), z (m), speed (0.0–1.0).
+    Engel tespiti Pi tarafındaki FSM (poll_sensors) tarafından yapılır.
     """
     global _last_stream_ms, _stream_started
     if len(payload) != 12:

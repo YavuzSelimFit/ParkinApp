@@ -191,7 +191,8 @@ def move(x, z, speed, obstacle_check=None):
     Parameters
     ----------
     x              : float  Lateral offset in metres  (+ = right, – = left)
-    z              : float  Forward distance in metres (must be > 0)
+    z              : float  Forward/reverse distance in metres
+                            Positive = forward, Negative = reverse.
     speed          : float  Normalised speed 0.0–1.0
     obstacle_check : callable or None
         Called every loop iteration with (completed_cm: float).
@@ -205,20 +206,26 @@ def move(x, z, speed, obstacle_check=None):
     """
     global left_pulses, right_pulses
 
-    if z <= 0:
-        return None                          # refuse reverse / zero targets
+    if z == 0:
+        return None                          # refuse zero target
 
-    steering_deg  = _calc_steering(x, z)
+    # Direction: +1 = forward, -1 = reverse
+    direction = 1 if z > 0 else -1
+    z_abs     = abs(z)
 
-    # Target distance
-    target_cm     = z * 100.0
+    steering_deg  = _calc_steering(x, z_abs)
+
+    # Target distance (always positive)
+    target_cm     = z_abs * 100.0
     target_pulses = int(target_cm * PULSES_PER_CM)
 
     # Base PWM (0–255)
     base_pwm = int(max(0.0, min(1.0, speed)) * 255)
 
     # --- Servo ---
-    servo_angle = 90 + SERVO_OFFSET + steering_deg
+    # Geri vites sırasında servo yönü tersine çevrilir
+    effective_steering = steering_deg * direction
+    servo_angle = 90 + SERVO_OFFSET + effective_steering
     servo_angle = max(SERVO_MIN, min(SERVO_MAX, servo_angle))
     _set_servo(servo_angle)
     time.sleep(0.4)                          # allow servo to reach position
@@ -251,7 +258,8 @@ def move(x, z, speed, obstacle_check=None):
             left_pwm   = max(0, min(255, left_pwm  - correction))
             right_pwm  = max(0, min(255, right_pwm + correction))
 
-        _drive(left_pwm, right_pwm)
+        # direction ile çarp: geri viteste motorlar ters döner
+        _drive(left_pwm * direction, right_pwm * direction)
 
         # Exit when average pulse count reaches target
         if (abs_left + abs_right) / 2 >= target_pulses:

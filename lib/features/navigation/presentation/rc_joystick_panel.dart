@@ -35,23 +35,25 @@ class _AnalogJoystickPanelState extends ConsumerState<AnalogJoystickPanel> {
     });
 
     // Analog normalized values (-100 to 100)
-    final double x = (_dragOffset.dx / _joystickRadius) * 100;
-    final double y = -(_dragOffset.dy / _joystickRadius) * 100; // Invert Y for Flutter coordinates
+    // Y ekseni Flutter'da aşağı pozitif, biz ileriyi pozitif istiyoruz: ters çevir.
+    final double jx = (_dragOffset.dx / _joystickRadius) * 100;
+    final double jy = -(_dragOffset.dy / _joystickRadius) * 100;
 
-    // Deadzone check
+    // Deadzone: 15px altında merkez kabul et
     if (_dragOffset.distance < 15.0) {
-      _sendCommand("RC:0:0");
+      _sendRc(0.0, 0.0);
     } else {
-      // Send as "RC:X:Y" for smooth analog control
-      _sendCommand("RC:${x.round()}:${y.round()}");
+      _sendRc(jx.roundToDouble(), jy.roundToDouble());
     }
   }
 
-  void _sendCommand(String cmd) {
-    if (_currentCommand != cmd) {
-      _currentCommand = cmd;
-      ref.read(hardwareServiceProvider).sendRcCommand(cmd);
-      debugPrint("Sending RC Command: $cmd");
+  void _sendRc(double x, double y) {
+    // Yalnızca değer değiştiğinde gönder (BLE spam önleme)
+    final cmdKey = 'RC:${x.toInt()}:${y.toInt()}';
+    if (_currentCommand != cmdKey) {
+      _currentCommand = cmdKey;
+      ref.read(hardwareServiceProvider).sendRcCommand(x, y);
+      debugPrint("Sending RC: x=$x y=$y");
     }
   }
 

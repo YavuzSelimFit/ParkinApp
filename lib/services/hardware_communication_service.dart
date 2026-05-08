@@ -50,6 +50,11 @@ class HardwareCommunicationService {
           (data) {
             final received = String.fromCharCodes(data).trim();
             debugPrint('Received from RPi: $received');
+            
+            if (received == "STATUS:ARRIVED") {
+              _statusController.add(VehicleStatus.parkedSuccessfully);
+            }
+            
             _dataController.add(received);
           },
           onError: (e) => debugPrint('BLE Subscription Error: $e'),
@@ -64,8 +69,7 @@ class HardwareCommunicationService {
 
   Future<void> sendParkCommand(ParkingSpace space) async {
     if (_deviceId == null) return;
-    // Protocol: Just the QR identifier bytes
-    final data = space.qrValue.codeUnits;
+    final data = "PARK:${space.qrValue}".codeUnits;
     await _ble.writeCharacteristicWithoutResponse(
       _commandCharacteristic,
       value: data,
@@ -74,8 +78,7 @@ class HardwareCommunicationService {
 
   Future<void> sendSummonCommand(ParkingSpace homeSpace) async {
     if (_deviceId == null) return;
-    // Protocol: Just the Home QR identifier bytes
-    final data = homeSpace.qrValue.codeUnits;
+    final data = "SUMMON:${homeSpace.qrValue}".codeUnits;
     await _ble.writeCharacteristicWithoutResponse(
       _commandCharacteristic,
       value: data,
@@ -88,10 +91,10 @@ class HardwareCommunicationService {
     deviceId: _deviceId!,
   );
 
-  Future<void> sendRcCommand(String command) async {
+  Future<void> sendRcCommand(double x, double y) async {
     if (_deviceId == null) return;
     try {
-      final data = command.codeUnits;
+      final data = "RC:$x:$y".codeUnits;
       await _ble.writeCharacteristicWithoutResponse(
         _commandCharacteristic,
         value: data,
@@ -118,5 +121,6 @@ class HardwareCommunicationService {
     _scanStream?.cancel();
     _connectionStream?.cancel();
     _statusController.close();
+    _dataController.close();
   }
 }

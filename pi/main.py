@@ -39,7 +39,7 @@ from ble_server import BLEServer
 # Config
 # ---------------------------------------------------------------------------
 
-UART_PORT  = '/dev/serial0'
+UART_PORT  = '/dev/ttyAMA0'
 UART_BAUD  = 115200
 
 # RC mod sabit hızı (0.0 – 1.0 arası).
@@ -177,6 +177,14 @@ try:
                         uart.send_stream(ux, uz, spd)
 
             # --- Otonom Park Komutu ---
+            elif cmd_upper.strip().isdigit():
+                target_id = int(cmd_upper.strip())
+                print(f"[MAIN] Otonom park komutu: ArUco ID={target_id}")
+                current_mode = AUTO_MODE
+                fsm.force_state(IDLE)   # Temiz başlangıç
+                fsm.set_target(target_id)
+                fsm.start()             # IDLE → SEARCHING
+
             elif cmd_upper.startswith("PARK:"):
                 parts = cmd_upper.split(":")
                 if len(parts) == 2 and parts[1].isdigit():
